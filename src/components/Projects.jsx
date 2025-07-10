@@ -1,69 +1,54 @@
 import { useState } from 'react';
+import techstoreImg from '../assets/techstore.webp'; 
+import combicommanderImg from '../assets/combicommander.webp';
+import portfolioImg from '../assets/portfolio.webp';
 
 const proyectos = [
   {
-  title: "Tienda de Componentes PC",
-  description: "E-commerce completo con carrito de compras, gestión de pedidos y panel administrativo para componentes de PC.",
-  longDescription: "Tienda online desarrollada con ASP.NET Core y SQL Server. Incluye sistema de roles (Admin, Usuario, Repartidor), carrito de compras, seguimiento de pedidos y dashboard administrativo completo.",
-  technologies: ["C#", "ASP.NET Core", "Entity Framework", "SQL Server", "Bootstrap"],
-  image: "https://via.placeholder.com/600x400/404040/FFFFFF?text=Tienda+PC+Components",
-  url: "https://github.com/PabloIgeiNakagawa/TiendaOnline",
-  demo: "http://techstore.somee.com/",
-  status: "Completado",
-  featured: true
+    title: "Tienda de Componentes PC",
+    description: "E-commerce con carrito de compras, roles (usuario, admin, repartidor) y panel administrativo para gestión integral de productos y pedidos.",
+    longDescription: `
+      Aplicación web que permite registro, navegación, compras y seguimiento de pedidos.
+      Incluye administración completa para gestionar productos, usuarios y pedidos, con reportes y auditoría
+      Interfaz responsive con Bootstrap y exportación de reportes a Excel y PDF.
+    `,
+    technologies: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "Bootstrap"],
+    image: techstoreImg,
+    url: "https://github.com/PabloIgeiNakagawa/TiendaOnline",
+    demo: "http://techstore.somee.com/",
+    status: "Completado",
+    featured: true
   },
   {
-    title: "Task Management App",
-    description: "Aplicación de gestión de tareas con colaboración en tiempo real y tableros kanban.",
-    longDescription: "Sistema de gestión de proyectos con funcionalidades de colaboración, asignación de tareas, seguimiento de progreso y notificaciones en tiempo real.",
-    technologies: ["React", "Node.js", "MongoDB", "Socket.io", "Bootstrap"],
-    image: "https://via.placeholder.com/600x400/505050/FFFFFF?text=Task+Manager",
-    url: "https://github.com/usuario/task-manager",
-    demo: "https://task-manager-demo.vercel.app",
+    title: "Sistema de gestión de flota de vehículos",
+    description: "Aplicación web académica para la gestión integral de vehículos con seguimiento en tiempo real.",
+    longDescription: "Proyecto desarrollado en el marco de una simulación profesional universitaria orientada a la administración de una flota de vehículos. Incluye funcionalidades para gestión de roles, mantenimientos, stock de repuestos y escaneo QR. Se integró la API de Traccar para rastreo en tiempo real. El desarrollo se organizó con GitLab, metodología Scrum y planificación con Trello.",
+    technologies: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "JavaScript", "Bootstrap", "Traccar API"],
+    image: combicommanderImg,
+    url: "https://gitlab.com/GastonSanchez/tp-principal-manejo-de-flotas/-/tree/Produccion?ref_type=heads",
+    demo: "",
     status: "Completado",
     featured: true
   },
   {
     title: "Portfolio Interactivo",
     description: "Mi sitio web personal con animaciones, efectos visuales y diseño responsivo.",
-    longDescription: "Portfolio personal desarrollado con React y Tailwind CSS, featuring animaciones CSS personalizadas, efectos parallax y optimización para SEO.",
+    longDescription: "Portfolio personal diseñado para mostrar proyectos, habilidades y experiencia profesional mediante una interfaz moderna, accesible y adaptable a distintos dispositivos.",
     technologies: ["React", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"],
-    image: "https://via.placeholder.com/600x400/606060/FFFFFF?text=Portfolio+Web",
-    url: "https://github.com/usuario/portfolio",
-    demo: "https://pablo-nakagawa.vercel.app",
+    image: portfolioImg,
+    url: "https://github.com/PabloIgeiNakagawa/portfolio",
+    demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
     status: "Completado",
     featured: false
   },
   {
-    title: "Weather Dashboard",
-    description: "Dashboard meteorológico con datos en tiempo real y pronósticos extendidos.",
-    longDescription: "Aplicación del clima que consume APIs meteorológicas, muestra datos en tiempo real, pronósticos y gráficos interactivos de tendencias climáticas.",
-    technologies: ["React", "Chart.js", "OpenWeather API", "Tailwind CSS"],
-    image: "https://via.placeholder.com/600x400/707070/FFFFFF?text=Weather+App",
-    url: "https://github.com/usuario/weather-dashboard",
-    demo: "https://weather-dashboard-demo.vercel.app",
-    status: "En desarrollo",
-    featured: false
-  },
-  {
-    title: "Blog Platform",
-    description: "CMS y blog con editor de contenido, categorías y sistema de comentarios.",
-    longDescription: "Plataforma de blog completa con CMS, editor WYSIWYG, sistema de categorías, comentarios y panel de administración para gestión de contenido.",
-    technologies: ["React", "C#", ".NET Core", "SQL Server", "TinyMCE"],
-    image: "https://via.placeholder.com/600x400/808080/FFFFFF?text=Blog+Platform",
-    url: "https://github.com/usuario/blog-platform",
-    demo: "",
-    status: "En desarrollo",
-    featured: false
-  },
-  {
-    title: "API REST Financial",
-    description: "API para gestión financiera con autenticación JWT y documentación Swagger.",
-    longDescription: "API REST desarrollada en .NET Core para gestión de finanzas personales, con endpoints para transacciones, categorías, reportes y autenticación segura.",
-    technologies: ["C#", ".NET Core", "JWT", "Swagger", "SQL Server"],
-    image: "https://via.placeholder.com/600x400/909090/FFFFFF?text=Financial+API",
-    url: "https://github.com/usuario/financial-api",
-    demo: "",
+    title: "Portfolio Interactivo",
+    description: "Mi sitio web personal con animaciones, efectos visuales y diseño responsivo.",
+    longDescription: "Portfolio personal diseñado para mostrar proyectos, habilidades y experiencia profesional mediante una interfaz moderna, accesible y adaptable a distintos dispositivos.",
+    technologies: ["React", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"],
+    image: portfolioImg,
+    url: "https://github.com/PabloIgeiNakagawa/portfolio",
+    demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
     status: "Completado",
     featured: false
   }

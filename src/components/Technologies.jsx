@@ -25,7 +25,7 @@ const tecnologias = [
   { 
     nombre: "Tailwind CSS", 
     icono: "https://www.svgrepo.com/show/374118/tailwind.svg",
-    categoria: "Frontend"
+    categoria: "Frontend (Aprendiendo)"
   },
   { 
     nombre: "Bootstrap", 
