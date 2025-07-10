@@ -46,48 +46,39 @@ export default function Home() {
       id="home"
       className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden"
     >
-      {/* Elementos de fondo */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500 opacity-10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500 opacity-10 rounded-full blur-3xl animate-pulse"></div>
-      </div>
 
       {/* Contenido principal */}
       <div className={`relative z-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         
         {/* Saludo animado */}
         <div className="mb-6">
-          <span className="text-2xl sm:text-3x1 font-medium">
+          <span className="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-white">
             👋 ¡Hola! Soy
           </span>
         </div>
 
         {/* Nombre principal */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 drop-shadow-2xl">
-          <span className="bg-gradient-to-r bg-clip-text">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 drop-shadow-2xl u-text-h1">
+          <span>
             Pablo Igei
           </span>
           <br />
-          <span className="text-white">
+          <span>
             Nakagawa
           </span>
         </h1>
 
         {/* Título profesional fijo */}
         <div className="mb-8">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold u-text-h2">
             Full Stack Developer | React & .NET Specialist
           </h2>
         </div>
 
         {/* Descripción mejorada */}
-        <p className="max-w-2xl mb-8 text-lg sm:text-xl leading-relaxed text-gray-200">
-          Especializado en transformar ideas en 
-          <span className="text-blue-400 font-semibold"> experiencias digitales únicas</span>. 
-          Creo interfaces modernas y funcionales con 
-          <span className="text-purple-400 font-semibold"> React</span>, 
-          <span className="text-blue-400 font-semibold"> .NET</span> y 
-          <span className="text-cyan-400 font-semibold"> Tailwind CSS</span>.
+        <p className="max-w-2xl mb-8 text-lg sm:text-xl leading-relaxed u-text-p">
+          Especializado en transformar ideas en experiencias digitales únicas. 
+          Creo interfaces modernas y funcionales con React, .NET y Tailwind CSS.
         </p>
 
         {/* Enlaces sociales */}
@@ -98,13 +89,12 @@ export default function Home() {
               href={link.url}
               target={link.name !== 'Email' ? '_blank' : undefined}
               rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-              className="group relative bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-full p-4 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+              className="group u-a-social"
               aria-label={link.name}
             >
-              <div className="text-gray-300 group-hover:text-white transition-colors duration-300">
+              <div className="text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
                 {link.icon}
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             </a>
           ))}
         </div>
@@ -113,18 +103,17 @@ export default function Home() {
         <div className="flex justify-center">
           <button
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-3"
+            className="group relative bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-100 text-white dark:text-gray-900 font-semibold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-3"
           >
             <span className="relative z-10">Conoce más sobre mí</span>
             <svg 
-              className="w-5 h-5 text-white animate-bounce relative z-10" 
+              className="w-5 h-5 text-white dark:text-gray-900 animate-bounce relative z-10" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
 

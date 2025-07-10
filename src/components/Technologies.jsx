@@ -20,7 +20,7 @@ const tecnologias = [
   { 
     nombre: "React", 
     icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    categoria: "Frontend"
+    categoria: "Frontend (Aprendiendo)"
   },
   { 
     nombre: "Tailwind CSS", 
@@ -43,11 +43,6 @@ const tecnologias = [
     icono: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_C_sharp.svg",
     categoria: "Backend"
   },
-  { 
-    nombre: "Node.js", 
-    icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    categoria: "Backend"
-  },
 
   // Base de Datos
   { 
@@ -66,32 +61,30 @@ const tecnologias = [
     nombre: "Visual Studio", 
     icono: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Visual_Studio_Icon_2022.svg",
     categoria: "Herramientas"
+  },
+  { 
+    nombre: "Trello", 
+    icono: "https://www.vectorlogo.zone/logos/trello/trello-icon.svg",
+    categoria: "Herramientas"
   }
 ];
-
 
 export default function Technologies() {
   const [tecnologiaHover, setTecnologiaHover] = useState(null);
 
   return (
     <section id="technologies" className="py-20 relative overflow-hidden">
-      {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-500 opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-bl from-purple-500 to-pink-500 opacity-5 rounded-full blur-3xl"></div>
-      </div>
-
       <div className="container mx-auto max-w-6xl px-6 relative z-10">
         
         {/* Título de sección */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold pb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold pb-4 u-text-h2">
             Stack Tecnológico
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Tecnologías y herramientas que domino para crear soluciones completas
+          <p className="u-text-p text-lg max-w-2xl mx-auto">
+            Tecnologías y Herramientas que utilizo para desarrollar soluciones eficientes y escalables.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-4"></div>
+          <div className="u-linea-divisora"></div>
         </div>
 
         {/* Grid de tecnologías */}
@@ -99,12 +92,12 @@ export default function Technologies() {
           {tecnologias.map((tecnologia, indice) => (
             <div
               key={indice}
-              className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 hover:scale-105 cursor-pointer"
+              className="group relative bg-white dark:bg-gray-900 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:scale-105 cursor-pointer shadow-lg"
               onMouseEnter={() => setTecnologiaHover(indice)}
               onMouseLeave={() => setTecnologiaHover(null)}
             >
               {/* Efecto de brillo al hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gray-100 dark:bg-gray-700 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               
               {/* Contenido */}
               <div className="relative z-10 flex flex-col items-center text-center">
@@ -118,26 +111,26 @@ export default function Technologies() {
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg hidden items-center justify-center text-white font-bold text-xl">
+                  <div className="w-16 h-16 bg-gray-800 dark:bg-gray-200 rounded-lg hidden items-center justify-center text-white dark:text-gray-900 font-bold text-xl">
                     {tecnologia.nombre.charAt(0)}
                   </div>
                 </div>
                 
-                <h3 className="text-white font-semibold mb-2 group-hover:text-blue-300 transition-colors">
+                <h3 className="u-text-h3 font-semibold mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                   {tecnologia.nombre}
                 </h3>
                 
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-gray-500 dark:text-gray-400">
                   {tecnologia.categoria}
                 </span>
               </div>
 
               {/* Tooltip mejorado */}
               {tecnologiaHover === indice && (
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap z-20 border border-white/20">
+                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-3 py-2 rounded-lg text-sm whitespace-nowrap z-20 border border-gray-700 dark:border-gray-300 shadow-lg">
                   <div className="font-medium">{tecnologia.nombre}</div>
-                  <div className="text-xs text-gray-300">{tecnologia.categoria}</div>
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black/90"></div>
+                  <div className="text-xs text-gray-300 dark:text-gray-600">{tecnologia.categoria}</div>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-gray-100"></div>
                 </div>
               )}
             </div>
@@ -148,7 +141,7 @@ export default function Technologies() {
         <div className="text-center mt-16">
           <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="group inline-flex items-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             <span>Ver proyectos realizados</span>
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
