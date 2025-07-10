@@ -42,14 +42,14 @@ const proyectos = [
     featured: false
   },
   {
-    title: "Portfolio Interactivo",
+    title: "Resultados de fútbol",
     description: "Mi sitio web personal con animaciones, efectos visuales y diseño responsivo.",
-    longDescription: "Portfolio personal diseñado para mostrar proyectos, habilidades y experiencia profesional mediante una interfaz moderna, accesible y adaptable a distintos dispositivos.",
-    technologies: ["React", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"],
-    image: portfolioImg,
-    url: "https://github.com/PabloIgeiNakagawa/portfolio",
-    demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
-    status: "Completado",
+    longDescription: "Aplicación web que muestra resultados de fútbol en tiempo real, con diseño responsivo y animaciones interactivas.",
+    technologies: ["React", "Tailwind CSS", "JavaScript", "HTML5", "CSS3", "API-Football"],
+    image: "",
+    url: "",
+    demo: "",
+    status: "Planificado",
     featured: false
   }
 ];
