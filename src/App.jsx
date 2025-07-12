@@ -1,26 +1,30 @@
-import Header from './components/Header';
-import Home from './components/Home';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Technologies from './components/Technologies';
-import Footer from './components/Footer';
+import AnimatedBackground from './AnimatedBackground';
+import Header from './components/header/Header';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Projects from './components/projects/Projects';
+import Contact from './components/contact/Contact';
+import Technologies from './components/technologies/Technologies';
+import Footer from './components/footer/Footer';
 import './App.css';
 
 function App() {
   return (
     <>
-      <Header />
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <main>
-          <Home />
-          <About />
-          <Technologies />
-          <Projects />
-          <Contact />
-        </main>
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <Header />
+        <div className="min-h-screen">
+          <main>
+            <Home />
+            <About />
+            <Technologies />
+            <Projects />
+            <Contact />
+          </main>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

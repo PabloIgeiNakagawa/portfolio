@@ -6,8 +6,6 @@ export default function Header() {
   const [seccionActiva, setSeccionActiva] = useState('home');
   const [menuAbierto, setMenuAbierto] = useState(false);
 
-  const logo = '{P}';
-
   useEffect(() => {
     const manejarDesplazamiento = () => {
       setEstaEnDesplazamiento(window.scrollY > 50);
@@ -62,7 +60,7 @@ export default function Header() {
         className="text-xl sm:text-2xl u-text-h1 font-extrabold hover:scale-105 transition-transform cursor-pointer"
         onClick={() => irASeccion('home')}
       >
-        {logo}
+        {'{P}'}
       </h1>
       
       {/* Navegación para desktop */}
