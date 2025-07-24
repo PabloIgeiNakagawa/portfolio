@@ -1,4 +1,49 @@
 @import "tailwindcss";
-html{
-    scroll-behavior: smooth;
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@layer components {
+    /* General */
+    .u-linea-divisora {
+        @apply w-24 h-1 bg-gray-900 dark:bg-white mx-auto rounded-full mt-4;
+    }
+    /* Texto */
+    .u-text-h1 {
+        @apply text-gray-900 dark:text-white;
+    }
+    .u-text-h2 {
+        @apply text-gray-900 dark:text-white;
+    }
+    .u-text-h3 {
+        @apply text-gray-900 dark:text-white;
+    }
+    .u-text-p{
+        @apply text-gray-600 dark:text-gray-300;
+    }
+    /* Header */
+    .u-navlink {
+        @apply relative cursor-pointer transition-colors duration-300 text-gray-900 dark:text-gray-300;
+    }
+    /* Contacto */
+    .u-label-contacto{
+        @apply block text-gray-900 dark:text-white font-semibold mb-2;
+    }
+    .u-input-contacto{
+        @apply w-full bg-white/10 border border-gray-900 dark:border-white rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300;
+    }
+    .u-textarea-contacto{
+        @apply w-full bg-white/10 border border-gray-900 dark:border-white rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none;
+    }
 }
