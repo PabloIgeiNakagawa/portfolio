@@ -5,7 +5,7 @@ import DropdownTema from './DropdownTema';
 type Seccion = 'home' | 'about' | 'technologies' | 'projects' | 'contact';
 
 export default function Header() {
-  const [estaEnDesplazamiento, setEstaEnDesplazamiento] = useState<boolean>(false);
+  const [_, setEstaEnDesplazamiento] = useState<boolean>(false);
   const [seccionActiva, setSeccionActiva] = useState<Seccion>('home');
   const [menuAbierto, setMenuAbierto] = useState<boolean>(false);
   const location = useLocation();

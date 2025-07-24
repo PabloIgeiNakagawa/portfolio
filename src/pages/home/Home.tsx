@@ -12,10 +12,6 @@ export default function Home() {
     setIsVisible(true);
   }, []);
 
-  const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section
       id="home"

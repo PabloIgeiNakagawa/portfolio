@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ButtonScrollProps {
   idDestino: string;
   texto: string;
