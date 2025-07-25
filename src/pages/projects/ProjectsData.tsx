@@ -214,15 +214,27 @@ export const proyectos: Proyecto[] = [
   },
   {
     title: "Información sobre Boca Juniors",
-    description: "Mi sitio web personal con animaciones, efectos visuales y diseño responsivo.",
-    longDescription: "Aplicación web que presenta información actualizada sobre el Club Atlético Boca Juniors, jugadores, estadísticas y más contenidos relacionados con el fútbol del club.",
+    description: "Aplicación web que presenta información actualizada sobre el Club Atlético Boca Juniors, jugadores, estadísticas y más contenidos relacionados con el fútbol del club.",
+    longDescription: `Esta aplicación web consume la API de Transfermarkt a través de RapidAPI para mostrar información detallada y actualizada sobre el Club Atlético Boca Juniors. 
+      Incluye datos del plantel actual, perfiles individuales de jugadores, estadísticas, y detalles del club. 
+      Desarrollada como parte de una práctica personal con tecnologías como React, React Router y TailwindCSS, la aplicación también ofrece una interfaz responsive para una experiencia óptima en distintos dispositivos.`,
     features: [
+      {
+        titulo: "Funcionalidades generales",
+        items: [
+          "Visualización del plantel actual con foto, nombre, posición y edad de los jugadores.",
+          "Detalle individual de cada jugador con estadísticas e información extraída desde la API.",
+          "Diseño responsive adaptado a dispositivos móviles, tablets y escritorio.",
+          "Navegación fluida mediante React Router (SPA).",
+          "Consumo de datos en tiempo real desde la API de Transfermarkt usando RapidAPI.",
+          "Componentes reutilizables y diseño limpio con Tailwind CSS."
+        ]
+      }
     ],
     technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS", "RapidAPI (Transfermarkt API)"],
-    image: "",
-    gallery: [],
-    url: "",
-    demo: "",
-    status: "En desarrollo"
+    ...getProjectImages('boca_juniors'),
+    url: "https://github.com/PabloIgeiNakagawa/boca-juniors",
+    demo: "https://boca-juniors-pabloigeinakagawas-projects.vercel.app/",
+    status: "Completado"
   }
 ];
