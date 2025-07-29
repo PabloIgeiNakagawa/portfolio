@@ -236,5 +236,35 @@ export const proyectos: Proyecto[] = [
     url: "https://github.com/PabloIgeiNakagawa/boca-juniors",
     demo: "https://boca-juniors-pabloigeinakagawas-projects.vercel.app/",
     status: "Completado"
+  },
+  {
+    title: "Organización de Torneos de Fútbol",
+    description: "Aplicación web para la gestión de torneos de fútbol: permite registrar equipos, jugadores, partidos, árbitros, eventos en juego y estadísticas.",
+    longDescription: `Esta aplicación web permite organizar torneos de fútbol de forma integral. 
+    Los usuarios pueden registrar equipos y jugadores, crear y gestionar partidos, asignar árbitros y registrar eventos como goles, tarjetas y sustituciones. 
+    Además, se generan estadísticas automáticas por jugador, equipo y torneo. 
+    La aplicación fue desarrollada como práctica personal utilizando tecnologías modernas como React, React Router y Tailwind CSS. Cuenta con una interfaz responsive y amigable, adaptada a distintos dispositivos.`,
+    features: [
+      {
+        titulo: "Funcionalidades principales",
+        items: [
+          "Registro y edición de equipos con sus respectivos jugadores.",
+          "Creación y programación de partidos entre equipos.",
+          "Asignación de árbitros y registro de eventos dentro de cada partido (goles, tarjetas, cambios, etc.).",
+          "Visualización de estadísticas detalladas por jugador, equipo y torneo.",
+          "Diseño responsive adaptado a móviles, tablets y escritorio.",
+          "Navegación fluida y dinámica mediante React Router (SPA).",
+          "Componentes reutilizables con estilo consistente gracias a Tailwind CSS."
+        ]
+      }
+    ],
+    technologies: [
+      "React", "Tailwind CSS", "HTML", "CSS", "TypeScript", 
+      ".NET Web API", "Entity Framework Core", "SQL Server"
+    ],
+    ...getProjectImages('torneo_futbol'),
+    url: "",
+    demo: "",
+    status: "En desarrollo"
   }
 ];
