@@ -70,7 +70,7 @@ export default function Header() {
           className="text-xl sm:text-2xl u-text-h1 font-extrabold hover:scale-105 transition-transform cursor-pointer"
           onClick={() => irASeccion('home')}
         >
-          {'{P}'}
+          {'{p}'}
         </h1>
         
         {/* Navegación para desktop */}

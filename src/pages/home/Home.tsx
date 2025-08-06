@@ -24,7 +24,7 @@ export default function Home() {
         {/* Nombre principal */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 drop-shadow-2xl u-text-h1">
           <span>
-            {"{P}"}
+            {"{p}"}
           </span>
         </h1>
 
