@@ -37,8 +37,8 @@ export const proyectos: Proyecto[] = [
     title: "Tienda de Componentes PC",
     description: "E-commerce con carrito de compras, roles (usuario, admin, repartidor) y panel administrativo para gestión integral de productos y pedidos.",
     longDescription: `Aplicación web que permite registro, navegación, compras y seguimiento de pedidos.
-      Incluye administración completa para gestionar productos, usuarios y pedidos, con reportes y auditoría
-      Interfaz responsive con Bootstrap y exportación de reportes a Excel y PDF.`,
+      Incluye administración completa para gestionar productos, usuarios y pedidos, con reportes y auditoría e
+      interfaz responsive con Bootstrap y exportación de reportes a Excel y PDF.`,
     features: [
       {
         titulo: "Roles diferenciados",
@@ -94,7 +94,7 @@ export const proyectos: Proyecto[] = [
         ],
       },
     ],
-    technologies: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "HTML", "CSS","Bootstrap"],
+    technologies: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "HTML", "CSS", "Bootstrap"],
     ...getProjectImages('tech_store'),
     url: "https://github.com/PabloIgeiNakagawa/TiendaOnline",
     demo: "http://techstore.somee.com/",
@@ -193,7 +193,7 @@ export const proyectos: Proyecto[] = [
         ]
       }
     ],
-    technologies: ["C#", "ASP.NET MVC", "Entity Framework", "SQL Server", "HTML", "CSS", "Bootstrap", "Traccar API", "Trello", "Gitlab"],
+    technologies: ["C#", "ASP.NET MVC", "ADO.NET", "SQL Server", "HTML", "CSS", "Bootstrap", "Traccar API", "Trello", "Gitlab"],
     ...getProjectImages('combi_commander'),
     url: "https://gitlab.com/GastonSanchez/tp-principal-manejo-de-flotas/-/tree/Produccion?ref_type=heads",
     demo: "",
@@ -206,7 +206,7 @@ export const proyectos: Proyecto[] = [
     longDescription: "Portfolio personal diseñado para mostrar proyectos, habilidades y experiencia profesional mediante una interfaz moderna, accesible y adaptable a distintos dispositivos.",
     features: [
     ],
-    technologies: ["React", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
+    technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS"],
     ...getProjectImages('portfolio'),
     url: "https://github.com/PabloIgeiNakagawa/portfolio",
     demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
@@ -217,7 +217,8 @@ export const proyectos: Proyecto[] = [
     description: "Aplicación web que presenta información actualizada sobre el Club Atlético Boca Juniors, jugadores, estadísticas y más contenidos relacionados con el fútbol del club.",
     longDescription: `Esta aplicación web consume la API de Transfermarkt a través de RapidAPI para mostrar información detallada y actualizada sobre el Club Atlético Boca Juniors. 
       Incluye datos del plantel actual, perfiles individuales de jugadores, estadísticas, y detalles del club. 
-      Desarrollada como parte de una práctica personal con tecnologías como React, React Router y TailwindCSS, la aplicación también ofrece una interfaz responsive para una experiencia óptima en distintos dispositivos.`,
+      Desarrollada como parte de una práctica personal con tecnologías como React, React Router y TailwindCSS, la aplicación también ofrece una interfaz responsive para una experiencia óptima en distintos dispositivos.
+      *Este proyecto lamentablemente ya no funciona debido a que algunos endpoints fueron removidos, pero sigue siendo un ejemplo de cómo integrar APIs externas en aplicaciones web.*`,
     features: [
       {
         titulo: "Funcionalidades generales",

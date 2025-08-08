@@ -112,25 +112,24 @@ const ProjectDetail = () => {
       </article>
 
       {/* Video Section */}
-      <article className="p-6">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4">Demo</h2>
-        <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-3 mb-10"></div>
-        {project.video && project.video.endsWith(".mp4") ? (
-          <div className="relative max-w-full w-full h-auto rounded-lg shadow-lg">
-            <video
-              className="w-full h-auto rounded-lg object-cover"
-              controls
-              preload="none"
-            >
-              <source src={project.video} type="video/mp4" />
-              Tu navegador no soporta el elemento de video.
-            </video>
-          </div>
-        ) : (
-          <p>No hay video disponible.</p>
-        )}
-      </article>
-
+      {project.video && project.video.endsWith(".mp4") ? (
+        <article className="p-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 dark:text-white text-black">Demo</h2>
+          <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-3 mb-10"></div>
+            <div className="relative max-w-full w-full h-auto rounded-lg shadow-lg">
+              <video
+                className="w-full h-auto rounded-lg object-cover"
+                controls
+                preload="none"
+              >
+                <source src={project.video} type="video/mp4" />
+                Tu navegador no soporta el elemento de video.
+              </video>
+            </div>
+        </article>
+      ) : (
+        ""
+      )}
 
       <div className="flex justify-end p-6">
         <button
