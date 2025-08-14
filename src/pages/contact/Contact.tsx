@@ -2,6 +2,7 @@ import { useState, useRef} from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
+import SectionTitle from "../../components/SectionTitle";
 
 interface Formulario {
   name: string;
@@ -20,7 +21,12 @@ export default function Contacto() {
   const [enviando, setEnviando] = useState<boolean>(false);
   const [enviado, setEnviado] = useState<boolean>(false);
 
+  const labelClass = "block text-gray-900 dark:text-white font-semibold mb-2";
+  const inputClass = "w-full bg-gray-100 dark:bg-neutral-800 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent transition-all duration-300";
+  const textareaClass = "w-full bg-gray-100 dark:bg-neutral-800 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent transition-all duration-300 resize-none";
+
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const manejarCambio = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormulario({
@@ -40,12 +46,30 @@ export default function Contacto() {
 
     setEnviando(true);
 
-    const datosEnviar = {
-      ...formulario,
-      "g-recaptcha-response": captcha
-    };
-
     try {
+      // Captcha
+      const verifyRes = await fetch("/api/verify-recaptcha", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: captcha })
+      });
+
+      const verifyJson = await verifyRes.json();
+
+      if (!verifyRes.ok || !verifyJson.success) {
+        console.error("Captcha verification failed:", verifyJson);
+        alert("No se pudo verificar el captcha. Intenta nuevamente.");
+        setEnviando(false);
+        recaptchaRef.current?.reset();
+        return;
+      }
+
+      // EmailJS
+      const datosEnviar = {
+        ...formulario,
+        "g-recaptcha-response": captcha
+      };
+
       await emailjs.send(
         "service_pl0p3ko",
         "template_mvrisu8",
@@ -57,30 +81,24 @@ export default function Contacto() {
       setFormulario({ name: "", email: "", subject: "", message: "" });
       recaptchaRef.current?.reset();
     } catch (error) {
-      console.error("EmailJS Error:", error);
+      console.error("Error al enviar:", error);
       alert("Error al enviar el mensaje. Por favor intenta más tarde.");
+    } finally {
+      setEnviando(false);
     }
-
-    setEnviando(false);
   };
+
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
       <div className="container mx-auto max-w-2xl px-6 relative z-10">
-        {/* Título de sección */}
-        <div className="text-center mb-16">
-          <h2 className="u-text-h2 text-4xl sm:text-5xl font-bold mb-4">
-            Contáctame
-          </h2>
-          <p className="u-text-p text-lg max-w-2xl mx-auto">
-            Estoy buscando trabajo y me encantaría formar parte de tu equipo
-          </p>
-          <div className="u-linea-divisora"></div>
-        </div>
+        <SectionTitle title="Contáctame"
+          paragraph="Estoy buscando trabajo y me encantaría formar parte de tu equipo"
+        />
 
         {/* Formulario de contacto */}
-        <div className="bg-white dark:bg-gray-900 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-          <h3 className="text-2xl font-bold u-text-h3 mb-6">
+        <div className="bg-white dark:bg-neutral-900 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
+          <h3 className="text-2xl font-bold mb-6">
             Envíame un mensaje
           </h3>
 
@@ -90,7 +108,7 @@ export default function Contacto() {
               <h4 className="text-xl font-semibold text-green-500 dark:text-green-400 mb-2">
                 ¡Mensaje enviado!
               </h4>
-              <p className="u-text-p mb-6">
+              <p className="mb-6">
                 Gracias por contactarme. Te responderé lo antes posible.
               </p>
               <button
@@ -104,7 +122,7 @@ export default function Contacto() {
             <form onSubmit={manejarEnvio} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="u-label-contacto">
+                  <label htmlFor="name" className={labelClass}>
                     Nombre *
                   </label>
                   <input
@@ -114,12 +132,12 @@ export default function Contacto() {
                     required
                     value={formulario.name}
                     onChange={manejarCambio}
-                    className="u-input-contacto"
+                    className={inputClass}
                     placeholder="Tu nombre"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="u-label-contacto">
+                  <label htmlFor="email" className={labelClass}>
                     Email *
                   </label>
                   <input
@@ -129,14 +147,14 @@ export default function Contacto() {
                     required
                     value={formulario.email}
                     onChange={manejarCambio}
-                    className="u-input-contacto"
+                    className={inputClass}
                     placeholder="tu@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="u-label-contacto">
+                <label htmlFor="subject" className={labelClass}>
                   Asunto *
                 </label>
                 <input
@@ -146,13 +164,13 @@ export default function Contacto() {
                   required
                   value={formulario.subject}
                   onChange={manejarCambio}
-                  className="u-input-contacto"
+                  className={inputClass}
                   placeholder="Oportunidad laboral"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="u-label-contacto">
+                <label htmlFor="message" className={labelClass}>
                   Mensaje *
                 </label>
                 <textarea
@@ -162,14 +180,14 @@ export default function Contacto() {
                   rows={6}
                   value={formulario.message}
                   onChange={manejarCambio}
-                  className="u-textarea-contacto"
+                  className={textareaClass}
                   placeholder="Cuéntame sobre la oportunidad laboral..."
                 />
               </div>
 
               <div className="flex justify-center">
                 <ReCAPTCHA
-                  sitekey="6Ldnon0rAAAAAPZriRTTtM7YhGYdPmvCfvje4yPn"
+                  sitekey={SITE_KEY}
                   ref={recaptchaRef}
                   theme="light"
                 />

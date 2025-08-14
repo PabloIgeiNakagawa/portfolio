@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function HomeDescription() {
-  const fullText: string = "Disfruto el proceso de transformar ideas en experiencias reales.";
+  const fullText: string = "Me gusta resolver, no sólo codificar.";
   const [typedText, setTypedText] = useState<string>('');
 
   useEffect(() => {
@@ -10,14 +10,14 @@ export default function HomeDescription() {
       setTypedText(fullText.slice(0, index + 1));
       index++;
       if (index === fullText.length) clearInterval(interval);
-    }, 50);
+    }, 100);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      <p className="max-w-2xl mb-8 text-lg sm:text-xl leading-relaxed u-text-p">
+      <p className="max-w-2xl mb-8 text-lg sm:text-xl leading-relaxed">
         {typedText}
         <span className="border-r-2 border-current animate-blink ml-1">&nbsp;</span>
       </p>

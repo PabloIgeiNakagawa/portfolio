@@ -11,6 +11,7 @@ export default function Header() {
   const location = useLocation();
   const estaEnDetalle = location.pathname.startsWith('/projects/');
   const navigate = useNavigate();
+  const navlinkClass = "relative cursor-pointer transition-colors duration-300 text-gray-900 dark:text-white dark:hover:text-white/50";
 
   useEffect(() => {
     const manejarDesplazamiento = () => {
@@ -63,24 +64,24 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl border-b border-gray-200 dark:border-gray-700">
+    <header className="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-white/60 dark:bg-neutral-950/50 backdrop-blur-xs border-b border-gray-200 dark:border-gray-700">
       <div className="container mx-auto flex justify-between items-center p-4 max-w-7xl">
         {/* Logo con efecto hover */}
         <h1 
-          className="text-xl sm:text-2xl u-text-h1 font-extrabold hover:scale-105 transition-transform cursor-pointer"
+          className="text-xl sm:text-2xl font-extrabold hover:scale-105 transition-transform cursor-pointer"
           onClick={() => irASeccion('home')}
         >
           {'{p}'}
         </h1>
         
         {/* Navegación para desktop */}
-        <nav className="hidden lg:block px-5">
+        <nav className="hidden lg:block px-5 ">
           <ul className="flex space-x-8 text-lg">
             {['home', 'about', 'technologies', 'projects', 'contact'].map((seccion) => (
               <li key={seccion}>
                 <button
                   onClick={() => irASeccion(seccion as Seccion)}
-                  className={`u-navlink ${
+                  className={`${navlinkClass} ${
                     seccionActiva === seccion 
                       ? 'font-bold animate-pulse' 
                       : ''

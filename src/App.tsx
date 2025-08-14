@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AnimatedBackground from './components/AnimatedBackground';
 import Header from './components/header/Header';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
@@ -45,9 +44,8 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Header />
+      <Header />
+      <div className="relative z-10 bg-white dark:bg-neutral-950 text-black dark:text-white">
         <Routes>
           <Route path="/projects/:id" element={<ProjectDetail />} />   
           <Route

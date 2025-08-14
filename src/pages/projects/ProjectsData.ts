@@ -38,7 +38,7 @@ export const proyectos: Proyecto[] = [
     description: "E-commerce con carrito de compras, roles (usuario, admin, repartidor) y panel administrativo para gestión integral de productos y pedidos.",
     longDescription: `Aplicación web que permite registro, navegación, compras y seguimiento de pedidos.
       Incluye administración completa para gestionar productos, usuarios y pedidos, con reportes y auditoría e
-      interfaz responsive con Bootstrap y exportación de reportes a Excel y PDF.`,
+      interfaz responsive con Bootstrap y exportación de reportes a Excel y PDF. Despliegue y base de datos en Somee.com`,
     features: [
       {
         titulo: "Roles diferenciados",
@@ -242,9 +242,8 @@ export const proyectos: Proyecto[] = [
     title: "Organización de Torneos de Fútbol",
     description: "Aplicación web para la gestión de torneos de fútbol: permite registrar equipos, jugadores, partidos, árbitros, eventos en juego y estadísticas.",
     longDescription: `Esta aplicación web permite organizar torneos de fútbol de forma integral. 
-    Los usuarios pueden registrar equipos y jugadores, crear y gestionar partidos, asignar árbitros y registrar eventos como goles, tarjetas y sustituciones. 
-    Además, se generan estadísticas automáticas por jugador, equipo y torneo. 
-    La aplicación fue desarrollada como práctica personal utilizando tecnologías modernas como React, React Router y Tailwind CSS. Cuenta con una interfaz responsive y amigable, adaptada a distintos dispositivos.`,
+    Los administradores pueden registrar equipos y jugadores, crear y gestionar partidos, asignar árbitros y registrar eventos como goles, tarjetas y sustituciones. 
+    Además, se generan estadísticas automáticas por jugador, equipo y torneo. Base de datos hosteada en Somee.com, .NET Web API hosteada en Render.com y frontend hosteado en Vercel.com`,
     features: [
       {
         titulo: "Funcionalidades principales",

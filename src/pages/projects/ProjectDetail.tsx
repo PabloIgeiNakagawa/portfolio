@@ -2,6 +2,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import type { Proyecto } from './ProjectsData';
 import { ButtonCode, ButtonDemo } from './Buttons';
+import SectionTitle from '../../components/SectionTitle'; 
 
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -48,17 +49,16 @@ const ProjectDetail = () => {
   }
 
   return (
-    <section className="py-20 container mx-auto max-w-6xl px-4 sm:px-6 z-10">
-      <h1 className="text-3xl sm:text-4xl text-center font-bold my-4 dark:text-white text-black">Detalles - {id}</h1>
-      <div className="u-linea-divisora mb-4"></div>
+    <section className="py-25 container mx-auto max-w-6xl px-4 sm:px-6 z-10">
+      <SectionTitle title={`Detalles - ${id}`} />
       {/* Descripción */}
       <article className="p-6 rounded-xl dark:text-white text-black">
         <div className="mb-10">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
             <h2 className="text-2xl sm:text-3xl font-bold">Descripción</h2>
             <div className="flex gap-4 justify-end">
-              <ButtonCode href={project.url} />
-              <ButtonDemo href={project.demo} />
+              {project.url && <ButtonCode href={project.url} />}
+              {project.demo && <ButtonDemo href={project.demo} />}
             </div>  
           </div>
           <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-3"></div>
@@ -76,7 +76,7 @@ const ProjectDetail = () => {
         {project.features.map((seccion, idx) => (
             <div
               key={idx}
-              className="mb-8 p-6 rounded-lg bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm shadow-lg border border-white/20 dark:border-gray-700/40 transition-all duration-300"
+              className="mb-8 p-6 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm shadow-lg border border-white/20 dark:border-gray-700/40 transition-all duration-300"
             >
               <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white tracking-wide">
                 {seccion.titulo}
@@ -145,12 +145,12 @@ const ProjectDetail = () => {
       {imagenIndex !== null && (
         <div
           onClick={cerrarVisor}
-          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
         >
           {/* Botón Cerrar */}
           <button
             onClick={cerrarVisor}
-            className="absolute top-5 right-6 text-white text-4xl font-bold z-50 cursor-pointer"
+            className="absolute top-20 right-15 text-white text-4xl font-bold z-50 cursor-pointer"
           >
             &times;
           </button>

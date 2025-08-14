@@ -2,13 +2,13 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white py-12 border-t border-gray-200 dark:border-gray-700">
+    <footer className="bg-white dark:bg-neutral-950 text-gray-900 dark:text-white py-12 border-t border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Información personal */}
           <div>
-            <h3 className="text-lg font-semibold u-text-h3 mb-4">Pablo Igei Nakagawa</h3>
-            <p className="u-text-p text-sm leading-relaxed">
+            <h3 className="text-lg font-semibold mb-4">Pablo Igei Nakagawa</h3>
+            <p className="text-sm leading-relaxed">
               Desarrollador Full Stack apasionado por crear soluciones innovadoras 
               y experiencias digitales excepcionales.
             </p>
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
 
           {/* Enlaces útiles */}
           <div>
-            <h3 className="text-lg u-text-h3 font-semibold mb-4">Navegación</h3>
+            <h3 className="text-lg font-semibold mb-4">Navegación</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#home" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
@@ -43,8 +43,8 @@ const Footer: React.FC = () => {
 
           {/* Información de contacto */}
           <div>
-            <h3 className="text-lg u-text-h3 font-semibold mb-4">Contacto</h3>
-            <div className="space-y-2 text-sm u-text-p">
+            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+            <div className="space-y-2 text-sm">
               <p>
                 Buenos Aires, Argentina
               </p>
@@ -63,13 +63,13 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-center md:text-left">
-              <p className="u-text-p text-sm">
+              <p className="text-sm">
                 © {new Date().getFullYear()} Pablo. Todos los derechos reservados.
               </p>
             </div>
 
             {/* Información adicional */}
-            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm u-text-p">
+            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm">
               <span>
                 Hecho con React y Tailwind CSS
               </span>

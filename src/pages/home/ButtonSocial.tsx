@@ -11,7 +11,7 @@ export default function ButtonSocial({ link }: ButtonSocialProps) {
         href={link.url}
         target={link.name !== 'Email' ? '_blank' : undefined}
         rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-        className="relative bg-white dark:bg-gray-800 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 rounded-full p-4 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
+        className="relative bg-white dark:bg-neutral-950 backdrop-blur-sm hover:bg-gray-100 dark:hover:bg-neutral-800 border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-500 rounded-full p-4 transition-all duration-300 transform hover:scale-110"
         aria-label={link.name}
         {...(link.download ? { download: true } : {})}
       >
