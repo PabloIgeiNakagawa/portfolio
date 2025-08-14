@@ -1,16 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/header/Header';
-import Home from './pages/home/Home';
-import About from './pages/about/About';
-import Projects from './pages/projects/Projects';
-import Contact from './pages/contact/Contact';
-import Technologies from './pages/technologies/Technologies';
-import Footer from './components/Footer';
-import ProjectDetail from './pages/projects/ProjectDetail';
-import './App.css';
-
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Home from './pages/home/Home';
+import ProjectDetail from './pages/project-detail/ProjectDetail';
+import NotFound from './pages/not-found/NotFound'
+import './App.css';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -22,49 +17,18 @@ const ScrollToTop = () => {
   return null;
 };
 
-function ScrollToSeccion() {
-  const location = useLocation();
-
-  useEffect(() => {
-    const scrollTarget = location.state?.seccionScroll;
-    if (scrollTarget) {
-      const el = document.getElementById(scrollTarget);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, [location]);
-
-  return null;
-}
-
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Header />
       <div className="relative z-10 bg-white dark:bg-neutral-950 text-black dark:text-white">
         <Routes>
-          <Route path="/projects/:id" element={<ProjectDetail />} />   
-          <Route
-            path="*"
-            element={
-              <>
-                <ScrollToSeccion />
-                <main>
-                  <Home />
-                  <About />
-                  <Technologies />
-                  <Projects />
-                  <Contact />
-                </main>
-              </>
-            }
-          />
+           <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="*" element={<NotFound />} />   
+           </Route>
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   );

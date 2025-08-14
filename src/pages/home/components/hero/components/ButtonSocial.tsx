@@ -1,4 +1,4 @@
-import type { SocialLink } from './HomeData';
+import type { SocialLink } from './HeroData';
 
 interface ButtonSocialProps {
   link: SocialLink;

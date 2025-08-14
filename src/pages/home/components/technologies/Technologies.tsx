@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { tecnologias } from './TechnologiesData';
-import TechnologyCard from './TechnologyCard';
+import { tecnologias } from './data/TechnologiesData';
+import TechnologyCard from './components/TechnologyCard';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../../../components/SectionTitle';
 
 export default function Technologies() {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);

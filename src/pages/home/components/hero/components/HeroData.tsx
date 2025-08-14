@@ -1,5 +1,5 @@
 import React from 'react';
-import CV from '../../assets/CV_PabloIgeiNakagawa.pdf';
+import CV from '../../../../../assets/CV_PabloIgeiNakagawa.pdf';
 
 export interface SocialLink {
   name: string;

@@ -1,4 +1,4 @@
-import type { Tecnologia } from "./TechnologiesData";
+import type { Tecnologia } from "../data/TechnologiesData";
 
 interface TechnologyCardProps {
   tecnologia: Tecnologia;

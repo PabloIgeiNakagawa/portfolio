@@ -1,7 +1,7 @@
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import type { Proyecto } from './ProjectsData';
-import { ButtonCode, ButtonDemo } from './Buttons';
+import type { Proyecto } from '../home/components/projects/data/ProjectsData';
+import { ButtonCode, ButtonDemo } from '../../components/Buttons';
 import SectionTitle from '../../components/SectionTitle'; 
 
 const ProjectDetail = () => {

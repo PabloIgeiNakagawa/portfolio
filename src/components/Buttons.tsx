@@ -36,7 +36,7 @@ function ButtonDemo({ href }: ButtonProps) {
   );
 }
 
-function ButtonInfo() {
+const ButtonInfo = () => {
   return (
     <a
       rel="noopener noreferrer"

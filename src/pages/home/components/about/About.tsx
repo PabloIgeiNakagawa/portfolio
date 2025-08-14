@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SectionTitle from '../../components/SectionTitle';
+import SectionTitle from '../../../../components/SectionTitle';
 
 export default function About() {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);

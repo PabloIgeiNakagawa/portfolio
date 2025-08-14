@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import DropdownTema from './DropdownTema';
 
-type Seccion = 'home' | 'about' | 'technologies' | 'projects' | 'contact';
+type Seccion = 'hero' | 'about' | 'technologies' | 'projects' | 'contact';
 
 export default function Header() {
   const [_, setEstaEnDesplazamiento] = useState<boolean>(false);
-  const [seccionActiva, setSeccionActiva] = useState<Seccion>('home');
+  const [seccionActiva, setSeccionActiva] = useState<Seccion>('hero');
   const [menuAbierto, setMenuAbierto] = useState<boolean>(false);
   const location = useLocation();
   const estaEnDetalle = location.pathname.startsWith('/projects/');
@@ -17,7 +17,7 @@ export default function Header() {
     const manejarDesplazamiento = () => {
       setEstaEnDesplazamiento(window.scrollY > 50);
       
-      const secciones: Seccion[] = ['home', 'about', 'technologies', 'projects', 'contact'];
+      const secciones: Seccion[] = ['hero', 'about', 'technologies', 'projects', 'contact'];
       const posicionScroll = window.scrollY + 100; // Offset para mejor detección
       
       for (const seccion of secciones) {
@@ -56,7 +56,7 @@ export default function Header() {
   };
 
   const nombresSeccion: Record<Seccion, string> = {
-    home: 'Inicio',
+    hero: 'Inicio',
     about: 'Sobre Mí',
     technologies: 'Tecnologías',
     projects: 'Proyectos',
@@ -64,12 +64,12 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-white/60 dark:bg-neutral-950/50 backdrop-blur-xs border-b border-gray-200 dark:border-gray-700">
+    <header className="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-white/60 dark:bg-neutral-950/50 backdrop-blur-xs border-b border-gray-200 dark:border-neutral-700">
       <div className="container mx-auto flex justify-between items-center p-4 max-w-7xl">
         {/* Logo con efecto hover */}
         <h1 
           className="text-xl sm:text-2xl font-extrabold hover:scale-105 transition-transform cursor-pointer"
-          onClick={() => irASeccion('home')}
+          onClick={() => irASeccion('hero')}
         >
           {'{p}'}
         </h1>
@@ -77,7 +77,7 @@ export default function Header() {
         {/* Navegación para desktop */}
         <nav className="hidden lg:block px-5 ">
           <ul className="flex space-x-8 text-lg">
-            {['home', 'about', 'technologies', 'projects', 'contact'].map((seccion) => (
+            {['hero', 'about', 'technologies', 'projects', 'contact'].map((seccion) => (
               <li key={seccion}>
                 <button
                   onClick={() => irASeccion(seccion as Seccion)}
@@ -112,9 +112,9 @@ export default function Header() {
             className="flex flex-col justify-center items-center w-8 h-8 space-y-1 group"
             aria-label="Abrir menú"
           >
-            <span className={`block w-6 h-0.5 bg-gray-700 dark:bg-gray-300 transition-all duration-300 ${menuAbierto ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-gray-700 dark:bg-gray-300 transition-all duration-300 ${menuAbierto ? 'opacity-0' : ''}`}></span>
-            <span className={`block w-6 h-0.5 bg-gray-700 dark:bg-gray-300 transition-all duration-300 ${menuAbierto ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-gray-700 dark:bg-neutral-300 transition-all duration-300 ${menuAbierto ? 'rotate-45 translate-y-2' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-gray-700 dark:bg-neutral-300 transition-all duration-300 ${menuAbierto ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-gray-700 dark:bg-neutral-300 transition-all duration-300 ${menuAbierto ? '-rotate-45 -translate-y-2' : ''}`}></span>
           </button>
         </div>
       </div>
@@ -123,16 +123,16 @@ export default function Header() {
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
         menuAbierto ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <nav className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
+        <nav className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-t border-gray-200 dark:border-neutral-700">
           <ul className="flex flex-col">
-            {['home', 'about', 'technologies', 'projects', 'contact'].map((seccion) => (
+            {['hero', 'about', 'technologies', 'projects', 'contact'].map((seccion) => (
               <li key={seccion}>
                 <button
                   onClick={() => irASeccion(seccion as Seccion)}
-                  className={`w-full text-left px-6 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 ${
+                  className={`w-full text-left px-6 py-4 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors duration-300 ${
                     seccionActiva === seccion 
-                      ? 'bg-gray-100 dark:bg-gray-800' 
-                      : 'text-gray-700 dark:text-gray-300'
+                      ? 'bg-gray-100 dark:bg-neutral-800' 
+                      : 'text-gray-700 dark:text-neutral-300'
                   }`}
                 >
                   {nombresSeccion[seccion as Seccion]}

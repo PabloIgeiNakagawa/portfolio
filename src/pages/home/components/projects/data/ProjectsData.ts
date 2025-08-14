@@ -1,4 +1,4 @@
-import videoCombiCommander from '../../assets/projects/combi_commander/demo.mp4'
+import videoCombiCommander from '../../../../../assets/projects/combi_commander/demo.mp4'
 
 export type Feature = {
   titulo: string;
@@ -19,7 +19,7 @@ export interface Proyecto {
   video?: string;
 }
 
-const imageModules = import.meta.glob('../../assets/projects/**/*.webp', { eager: true });
+const imageModules = import.meta.glob('../../../../../assets/projects/**/*.webp', { eager: true });
 
 const getProjectImages = (projectFolder: string) => {
   const images = Object.entries(imageModules)

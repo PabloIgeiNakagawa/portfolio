@@ -1,8 +1,10 @@
-import { useState, useRef} from "react";
+import { useState, useRef, useEffect } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
-import SectionTitle from "../../components/SectionTitle";
+import SectionTitle from "../../../../components/SectionTitle";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface Formulario {
   name: string;
@@ -11,7 +13,7 @@ interface Formulario {
   message: string;
 }
 
-export default function Contacto() {
+export default function Contact() {
   const [formulario, setFormulario] = useState<Formulario>({
     name: "",
     email: "",
@@ -87,10 +89,57 @@ export default function Contacto() {
       setEnviando(false);
     }
   };
+  
+  const containerRef = useRef<HTMLElement | null>(null);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const q = gsap.utils.selector(containerRef);
+
+      // Inicial: escondemos campos, captcha y botones
+      gsap.set(q('.form-field'), { opacity: 0, y: 18, force3D: true });
+      gsap.set(q('.efecto-aparicion'), { opacity: 0, y: 18, force3D: true });
+
+      // Animación por lotes para los campos (más eficiente que uno por uno)
+      ScrollTrigger.batch(q('.form-field'), {
+        start: 'top 85%',
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            stagger: 0.06
+          });
+        },
+        once: true
+      });
+
+      // Animación para elementos puntuales (título, captcha, botón)
+      ScrollTrigger.batch(q('.efecto-aparicion'), {
+        start: 'top 85%',
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power3.out',
+            stagger: 0.08
+          });
+        },
+        once: true
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-20 relative overflow-hidden" ref={containerRef}>
       <div className="container mx-auto max-w-2xl px-6 relative z-10">
         <SectionTitle title="Contáctame"
           paragraph="Estoy buscando trabajo y me encantaría formar parte de tu equipo"
@@ -98,12 +147,12 @@ export default function Contacto() {
 
         {/* Formulario de contacto */}
         <div className="bg-white dark:bg-neutral-900 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
-          <h3 className="text-2xl font-bold mb-6">
+          <h3 className="text-2xl font-bold mb-6 efecto-aparicion">
             Envíame un mensaje
           </h3>
 
           {enviado ? (
-            <div className="text-center py-8">
+            <div className="text-center py-8 efecto-aparicion">
               <div className="text-6xl mb-4">✅</div>
               <h4 className="text-xl font-semibold text-green-500 dark:text-green-400 mb-2">
                 ¡Mensaje enviado!
@@ -121,7 +170,7 @@ export default function Contacto() {
           ) : (
             <form onSubmit={manejarEnvio} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
+                <div className="form-field">
                   <label htmlFor="name" className={labelClass}>
                     Nombre *
                   </label>
@@ -136,7 +185,7 @@ export default function Contacto() {
                     placeholder="Tu nombre"
                   />
                 </div>
-                <div>
+                <div className="form-field">
                   <label htmlFor="email" className={labelClass}>
                     Email *
                   </label>
@@ -153,7 +202,7 @@ export default function Contacto() {
                 </div>
               </div>
 
-              <div>
+              <div className="form-field">
                 <label htmlFor="subject" className={labelClass}>
                   Asunto *
                 </label>
@@ -169,7 +218,7 @@ export default function Contacto() {
                 />
               </div>
 
-              <div>
+              <div className="form-field">
                 <label htmlFor="message" className={labelClass}>
                   Mensaje *
                 </label>
@@ -185,7 +234,7 @@ export default function Contacto() {
                 />
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center efecto-aparicion">
                 <ReCAPTCHA
                   sitekey={SITE_KEY}
                   ref={recaptchaRef}
@@ -196,7 +245,7 @@ export default function Contacto() {
               <button
                 type="submit"
                 disabled={enviando}
-                className="w-full bg-gradient-to-r bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 disabled:from-gray-600 disabled:to-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer"
+                className="w-full bg-gradient-to-r bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 disabled:from-gray-600 disabled:to-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer efecto-aparicion"
               >
                 {enviando ? (
                   <>

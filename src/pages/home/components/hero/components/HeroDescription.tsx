@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function HomeDescription() {
+export default function HeroDescription() {
   const fullText: string = "Me gusta resolver, no sólo codificar.";
   const [typedText, setTypedText] = useState<string>('');
 
