@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Layout from './components/layout/Layout';
+import Layout from './layout/Layout';
 import Home from './pages/home/Home';
 import ProjectDetail from './pages/project-detail/ProjectDetail';
 import NotFound from './pages/not-found/NotFound'
