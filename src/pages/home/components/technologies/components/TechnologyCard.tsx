@@ -37,10 +37,10 @@ export default function TechnologyCard({
             {tecnologia.nombre.charAt(0)}
           </div>
         </div>
-        <h3 className="u-text-h3 font-semibold mb-2 group-hover:text-gray-700 dark:group-hover:text-neutral-300 transition-colors">
+        <h3 className="font-titulo font-semibold mb-2 group-hover:text-gray-700 dark:group-hover:text-neutral-300 transition-colors">
           {tecnologia.nombre}
         </h3>
-        <span className="text-xs text-gray-500 dark:text-neutral-400">
+        <span className="font-subtitulo text-xs text-gray-500 dark:text-neutral-400">
           {tecnologia.categoria}
         </span>
       </div>

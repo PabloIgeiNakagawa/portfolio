@@ -17,7 +17,7 @@ export default function HeroDescription() {
 
   return (
     <>
-      <p className="max-w-2xl mb-8 text-lg sm:text-xl leading-relaxed">
+      <p className="max-w-2xl mb-8 text-lg sm:text-xl leading-relaxed font-texto">
         {typedText}
         <span className="border-r-2 border-current animate-blink ml-1">&nbsp;</span>
       </p>

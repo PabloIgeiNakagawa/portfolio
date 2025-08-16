@@ -23,9 +23,8 @@ export default function Contact() {
   const [enviando, setEnviando] = useState<boolean>(false);
   const [enviado, setEnviado] = useState<boolean>(false);
 
-  const labelClass = "block text-gray-900 dark:text-white font-semibold mb-2";
-  const inputClass = "w-full bg-gray-100 dark:bg-neutral-800 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent transition-all duration-300";
-  const textareaClass = "w-full bg-gray-100 dark:bg-neutral-800 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent transition-all duration-300 resize-none";
+  const labelClass = "block font-subtitulo text-gray-900 dark:text-white font-semibold mb-2";
+  const inputTextAreaClass = "w-full bg-gray-100 dark:bg-neutral-800 rounded-lg px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent transition-all duration-300";
 
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -147,7 +146,7 @@ export default function Contact() {
 
         {/* Formulario de contacto */}
         <div className="bg-white dark:bg-neutral-900 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
-          <h3 className="text-2xl font-bold mb-6 efecto-aparicion">
+          <h3 className="text-2xl font-titulo font-bold mb-6 efecto-aparicion">
             Envíame un mensaje
           </h3>
 
@@ -181,7 +180,7 @@ export default function Contact() {
                     required
                     value={formulario.name}
                     onChange={manejarCambio}
-                    className={inputClass}
+                    className={inputTextAreaClass}
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -196,7 +195,7 @@ export default function Contact() {
                     required
                     value={formulario.email}
                     onChange={manejarCambio}
-                    className={inputClass}
+                    className={inputTextAreaClass}
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -213,7 +212,7 @@ export default function Contact() {
                   required
                   value={formulario.subject}
                   onChange={manejarCambio}
-                  className={inputClass}
+                  className={inputTextAreaClass}
                   placeholder="Oportunidad laboral"
                 />
               </div>
@@ -229,7 +228,7 @@ export default function Contact() {
                   rows={6}
                   value={formulario.message}
                   onChange={manejarCambio}
-                  className={textareaClass}
+                  className={`${inputTextAreaClass} resize-none`}
                   placeholder="Cuéntame sobre la oportunidad laboral..."
                 />
               </div>

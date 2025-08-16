@@ -55,7 +55,7 @@ const ProjectDetail = () => {
       <article className="p-6 rounded-xl dark:text-white text-black">
         <div className="mb-10">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-            <h2 className="text-2xl sm:text-3xl font-bold">Descripción</h2>
+            <h2 className="text-2xl sm:text-3xl font-titulo font-bold">Descripción</h2>
             <div className="flex gap-4 justify-end">
               {project.url && <ButtonCode href={project.url} />}
               {project.demo && <ButtonDemo href={project.demo} />}
@@ -63,25 +63,27 @@ const ProjectDetail = () => {
           </div>
           <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-3"></div>
         </div>
-        <p className="mb-2"><strong>Tecnologías:</strong> {project.technologies.join(', ')}</p>
-        <p className="mb-2"><strong>Estado:</strong> {project.status}</p>
-        <p className="text-gray-800 dark:text-gray-200 leading-relaxed">{project.longDescription}</p>
+        <p className="mb-2 font-subtitulo"><strong>Tecnologías:</strong> {project.technologies.join(', ')}</p>
+        <p className="mb-2 font-subtitulo"><strong>Estado:</strong> {project.status}</p>
+        <p className="font-texto text-gray-800 dark:text-gray-200 leading-relaxed">{project.longDescription}</p>
       </article>
       {/* Características */}
-      <article className="p-6 rounded-xl dark:text-white text-black">
-        <div className="mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold">Características</h2>
-          <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-4"></div>
-        </div>
-        {project.features.map((seccion, idx) => (
+      {project.features && project.features.length > 0 && (
+        <article className="p-6 rounded-xl dark:text-white text-black">
+          <div className="mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold">Características</h2>
+            <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-4"></div>
+          </div>
+
+          {project.features.map((seccion, idx) => (
             <div
               key={idx}
               className="mb-8 p-6 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm shadow-lg border border-white/20 dark:border-gray-700/40 transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white tracking-wide">
+              <h3 className="text-2xl font-subtitulo font-bold mb-4 text-gray-800 dark:text-white tracking-wide">
                 {seccion.titulo}
               </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+              <ul className="list-disc list-inside space-y-2 font-texto text-gray-700 dark:text-gray-300">
                 {seccion.items.map((item, i) => (
                   <li key={i} className="relative pl-4">
                     {item}
@@ -90,7 +92,9 @@ const ProjectDetail = () => {
               </ul>
             </div>
           ))}
-      </article>
+        </article>
+      )}
+
 
       {/* Galería */}
       <article className="p-6 rounded-xl dark:text-white text-black">
@@ -134,7 +138,7 @@ const ProjectDetail = () => {
       <div className="flex justify-end p-6">
         <button
           onClick={() => navigate("/", { state: { seccionScroll: "projects" } })}
-          className="cursor-pointer bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 
+          className="cursor-pointer bg-gray-900 dark:bg-white  font-texto text-white dark:text-gray-900 hover:bg-gray-800 
          dark:hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg"
         >
           ← Volver

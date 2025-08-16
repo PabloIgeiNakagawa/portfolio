@@ -94,7 +94,7 @@ export const proyectos: Proyecto[] = [
         ],
       },
     ],
-    technologies: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "HTML", "CSS", "Bootstrap"],
+    technologies: ["C#", "ASP.NET Core MVC", "Entity Framework Core", "SQL Server", "HTML", "CSS", "JavaScript", "Bootstrap", "GitHub"],
     ...getProjectImages('tech_store'),
     url: "https://github.com/PabloIgeiNakagawa/TiendaOnline",
     demo: "http://techstore.somee.com/",
@@ -193,7 +193,7 @@ export const proyectos: Proyecto[] = [
         ]
       }
     ],
-    technologies: ["C#", "ASP.NET MVC", "ADO.NET", "SQL Server", "HTML", "CSS", "Bootstrap", "Traccar API", "Trello", "Gitlab"],
+    technologies: ["C#", "ASP.NET MVC", "ADO.NET", "SQL Server", "HTML", "CSS", "JavaScript", "Bootstrap", "Traccar API", "Trello", "Gitlab"],
     ...getProjectImages('combi_commander'),
     url: "https://gitlab.com/GastonSanchez/tp-principal-manejo-de-flotas/-/tree/Produccion?ref_type=heads",
     demo: "",
@@ -203,10 +203,11 @@ export const proyectos: Proyecto[] = [
   {
     title: "Portfolio Interactivo",
     description: "Mi sitio web personal con animaciones, efectos visuales y diseño responsivo.",
-    longDescription: "Portfolio personal diseñado para mostrar proyectos, habilidades y experiencia profesional mediante una interfaz moderna, accesible y adaptable a distintos dispositivos.",
-    features: [
-    ],
-    technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS"],
+    longDescription: 
+    `Portfolio personal creado para exhibir proyectos, habilidades y experiencia profesional a través de una interfaz moderna, accesible y totalmente responsive. 
+     Las animaciones se implementaron con la librería GSAP, la navegación y los detalles de los proyectos se gestionan con React Router, y el formulario de contacto funciona mediante EmailJS.`,
+    features: [],
+    technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS", "GSAP", "EmailJS","GitHub"],
     ...getProjectImages('portfolio'),
     url: "https://github.com/PabloIgeiNakagawa/portfolio",
     demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
@@ -232,7 +233,7 @@ export const proyectos: Proyecto[] = [
         ]
       }
     ],
-    technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS", "RapidAPI (Transfermarkt API)"],
+    technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS", "RapidAPI (Transfermarkt API)", "GitHub"],
     ...getProjectImages('boca_juniors'),
     url: "https://github.com/PabloIgeiNakagawa/boca-juniors",
     demo: "https://boca-juniors-pabloigeinakagawas-projects.vercel.app/",

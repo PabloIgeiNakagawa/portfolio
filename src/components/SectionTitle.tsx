@@ -72,12 +72,12 @@ export default function SectionTitle({ title, paragraph, className = '' }: Secti
 
   return (
     <div ref={containerRef} className={`text-center mb-16 ${className}`}>
-      <h2 ref={titleRef} className="text-4xl sm:text-5xl font-bold pb-4">
+      <h2 ref={titleRef} className="text-4xl sm:text-5xl font-bold font-titulo pb-4">
         {splitTitle(title)}
       </h2>
 
       {paragraph && (
-        <p ref={paragraphRef} className="text-lg max-w-2xl mx-auto efecto-aparicion">
+        <p ref={paragraphRef} className="text-lg max-w-2xl mx-auto font-subtitulo efecto-aparicion">
           {paragraph}
         </p>
       )}

@@ -1,12 +1,15 @@
 const Footer = () => {
+  const h3ClassName = "text-lg font-semibold mb-4 font-titulo"
+  const paClassName = "text-sm leading-relaxed"
+
   return (
     <footer className="bg-white dark:bg-neutral-950 text-gray-900 dark:text-white py-12 border-t border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Información personal */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Pablo Igei Nakagawa</h3>
-            <p className="text-sm leading-relaxed">
+            <h3 className={h3ClassName}>Pablo Igei Nakagawa</h3>
+            <p className={paClassName}>
               Desarrollador Full Stack apasionado por crear soluciones innovadoras 
               y experiencias digitales excepcionales.
             </p>
@@ -14,25 +17,25 @@ const Footer = () => {
 
           {/* Enlaces útiles */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Navegación</h3>
+            <h3 className={h3ClassName}>Navegación</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#home" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                <a href="#home" className={paClassName}>
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                <a href="#about" className={paClassName}>
                   Sobre Mí
                 </a>
               </li>
               <li>
-                <a href="#projects" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                <a href="#projects" className={paClassName}>
                   Proyectos
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                <a href="#contact" className={paClassName}>
                   Contacto
                 </a>
               </li>
@@ -41,7 +44,7 @@ const Footer = () => {
 
           {/* Información de contacto */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+            <h3 className={h3ClassName}>Contacto</h3>
             <div className="space-y-2 text-sm">
               <p>
                 Buenos Aires, Argentina

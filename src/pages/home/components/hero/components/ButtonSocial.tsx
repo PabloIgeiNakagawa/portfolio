@@ -20,7 +20,7 @@ export default function ButtonSocial({ link }: ButtonSocialProps) {
         </div>
       </a>
 
-      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs px-4 py-1 rounded shadow-lg z-20 whitespace-nowrap pointer-events-none min-w-max">
+      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs px-4 py-1 rounded shadow-lg z-20 whitespace-nowrap pointer-events-none min-w-max font-texto">
         {link.name}
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-4 border-transparent border-t-gray-900 dark:border-t-white"></div>
       </div>

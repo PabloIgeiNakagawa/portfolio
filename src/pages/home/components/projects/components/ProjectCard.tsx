@@ -94,10 +94,10 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
         {/* Contenido textual */}
         <div className="p-5 sm:p-7 flex flex-col flex-1 project-card-content">
           <div className="flex-1">
-            <h4 ref={titleRef} className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h4 ref={titleRef} className="font-titulo text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {project.title}
             </h4>
-            <p className="text-gray-600 dark:text-neutral-300 text-sm sm:text-base mb-5 leading-relaxed">
+            <p className="font-subtitulo text-gray-600 dark:text-neutral-300 text-sm sm:text-base mb-5 leading-relaxed">
               {project.description}
             </p>
 
@@ -106,7 +106,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
               {project.technologies.map((tech, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-neutral-300 rounded-full text-xs sm:text-sm hover:bg-gray-200 dark:hover:bg-neutral-700 transition"
+                  className="font-texto px-3 py-1 bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-neutral-300 rounded-full text-xs sm:text-sm hover:bg-gray-200 dark:hover:bg-neutral-700 transition"
                 >
                   {tech}
                 </span>
