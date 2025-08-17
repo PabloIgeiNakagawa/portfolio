@@ -50,7 +50,7 @@ const ProjectDetail = () => {
 
   return (
     <section className="py-25 container mx-auto max-w-6xl px-4 sm:px-6 z-10">
-      <SectionTitle title={`Detalles - ${id}`} />
+      <SectionTitle title={id ?? "Proyecto"} />
       {/* Descripción */}
       <article className="p-6 rounded-xl dark:text-white text-black">
         <div className="mb-10">
@@ -61,32 +61,51 @@ const ProjectDetail = () => {
               {project.demo && <ButtonDemo href={project.demo} />}
             </div>  
           </div>
-          <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-3"></div>
+          <div className="w-24 h-1 bg-black dark:bg-white rounded-full mt-3"></div>
         </div>
-        <p className="mb-2 font-subtitulo"><strong>Tecnologías:</strong> {project.technologies.join(', ')}</p>
-        <p className="mb-2 font-subtitulo"><strong>Estado:</strong> {project.status}</p>
-        <p className="font-texto text-gray-800 dark:text-gray-200 leading-relaxed">{project.longDescription}</p>
+        
+        <div className="space-y-3">
+          <p className="inline-block mb-6 px-3 py-1 rounded-tr-xl rounded-bl-xl text-sm font-medium bg-black dark:bg-white text-white dark:text-black">
+            {project.status}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.technologies.map((tech, i) => (
+              <span
+                key={i}
+                className="font-texto px-3 py-1 bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-neutral-300 rounded-full text-xs sm:text-sm hover:bg-gray-200 dark:hover:bg-neutral-700 transition"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+          
+          <p className="font-texto text-black dark:text-white leading-relaxed pt-2">
+            {project.longDescription}
+          </p>
+        </div>
       </article>
       {/* Características */}
       {project.features && project.features.length > 0 && (
         <article className="p-6 rounded-xl dark:text-white text-black">
           <div className="mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold">Características</h2>
-            <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-4"></div>
+            <h2 className="text-2xl sm:text-3xl font-titulo font-bold">Características</h2>
+            <div className="w-24 h-1 bg-black dark:bg-white rounded-full mt-4"></div>
           </div>
 
           {project.features.map((seccion, idx) => (
             <div
               key={idx}
-              className="mb-8 p-6 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm shadow-lg border border-white/20 dark:border-gray-700/40 transition-all duration-300"
+              className="mb-8 p-6 rounded-lg bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm shadow-lg border border-white/20 dark:border-gray-700/40 transition-all duration-300 hover:shadow-xl"
             >
-              <h3 className="text-2xl font-subtitulo font-bold mb-4 text-gray-800 dark:text-white tracking-wide">
+              <h3 className="text-2xl font-subtitulo font-bold mb-6 text-black dark:text-white tracking-wide">
                 {seccion.titulo}
               </h3>
-              <ul className="list-disc list-inside space-y-2 font-texto text-gray-700 dark:text-gray-300">
+              <ul className="space-y-3 font-texto text-gray-900 dark:text-white">
                 {seccion.items.map((item, i) => (
-                  <li key={i} className="relative pl-4">
-                    {item}
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-1 h-4 bg-black dark:bg-white mt-1.5 flex-shrink-0 rounded-full"></div>
+                    <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -100,7 +119,7 @@ const ProjectDetail = () => {
       <article className="p-6 rounded-xl dark:text-white text-black">
         <div className="mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold">Galería</h2>
-          <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-4"></div>
+          <div className="w-24 h-1 bg-black dark:bg-white rounded-full mt-4"></div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {project.gallery.map((imgUrl, index) => (
@@ -119,7 +138,7 @@ const ProjectDetail = () => {
       {project.video && project.video.endsWith(".mp4") ? (
         <article className="p-6">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 dark:text-white text-black">Demo</h2>
-          <div className="w-24 h-1 bg-gray-900 dark:bg-white rounded-full mt-3 mb-10"></div>
+          <div className="w-24 h-1 bg-black dark:bg-white rounded-full mt-3 mb-10"></div>
             <div className="relative max-w-full w-full h-auto rounded-lg shadow-lg">
               <video
                 className="w-full h-auto rounded-lg object-cover"
@@ -138,8 +157,8 @@ const ProjectDetail = () => {
       <div className="flex justify-end p-6">
         <button
           onClick={() => navigate("/", { state: { seccionScroll: "projects" } })}
-          className="cursor-pointer bg-gray-900 dark:bg-white  font-texto text-white dark:text-gray-900 hover:bg-gray-800 
-         dark:hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg"
+          className="cursor-pointer bg-black dark:bg-white  font-texto text-white dark:text-black hover:bg-black/85
+         dark:hover:bg-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg"
         >
           ← Volver
         </button>

@@ -20,7 +20,6 @@ export default function Skills() {
     { title: "Trabajo en equipo", description: "Colaboración y coordinación en proyectos" },
     { title: "Comunicación", description: "Efectiva y clara, tanto oral como escrita" },
     { title: "Resolución de problemas", description: "Analizar errores y proponer soluciones eficientes" },
-    { title: "Organización", description: "Gestión del tiempo y prioridades" },
     { title: "Adaptabilidad", description: "Flexibilidad ante nuevos retos y tecnologías" },
     { title: "Aprendizaje rápido", description: "Capacidad de incorporar nuevas herramientas y conocimientos" },
   ];

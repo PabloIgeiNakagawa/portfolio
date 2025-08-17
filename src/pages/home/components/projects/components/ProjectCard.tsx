@@ -6,7 +6,7 @@ import gsap from 'gsap';
 
 // Mapeo de estados a clases Tailwind (colores)
 const statusColors: Record<string, string> = {
-  "Completado": "bg-green-600 dark:bg-green-400 text-white",
+  "Finalizado": "bg-green-600 dark:bg-green-400 text-white",
   "En desarrollo": "bg-orange-600 dark:bg-orange-400 text-white",
   "Planificado": "bg-blue-600 dark:bg-blue-400 text-white"
 };
@@ -83,7 +83,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
             />
           </div>
 
-          {/* Badge de estado (Completado / En desarrollo / Planificado) */}
+          {/* Badge de estado (Finalizado / En desarrollo / Planificado) */}
           <span
             className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium shadow-md ${statusColors[project.status]}`}
           >

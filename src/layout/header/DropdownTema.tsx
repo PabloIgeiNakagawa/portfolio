@@ -96,7 +96,7 @@ export default function DropdownTema() {
               <button
                 key={tema}
                 onClick={() => cambiarTema(tema)}
-                className={`block w-full text-left px-3 py-2 cursor-pointer text-sm text-black dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors duration-200 ${
+                className={`block w-full text-left px-3 py-2 cursor-pointer font-texto text-sm text-black dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors duration-200 ${
                   temaActual === tema ? 'font-bold bg-gray-100 dark:bg-neutral-700' : ''
                 }`}
               >

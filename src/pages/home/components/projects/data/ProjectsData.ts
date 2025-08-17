@@ -15,7 +15,7 @@ export interface Proyecto {
   gallery: string [];
   url: string;
   demo: string;
-  status: "Completado" | "En desarrollo" | "Planificado";
+  status: "Finalizado" | "En desarrollo" | "Planificado";
   video?: string;
 }
 
@@ -98,7 +98,7 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('tech_store'),
     url: "https://github.com/PabloIgeiNakagawa/TiendaOnline",
     demo: "http://techstore.somee.com/",
-    status: "Completado"
+    status: "Finalizado"
   },
   {
     title: "Sistema de gestión de flota de vehículos",
@@ -197,11 +197,11 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('combi_commander'),
     url: "https://gitlab.com/GastonSanchez/tp-principal-manejo-de-flotas/-/tree/Produccion?ref_type=heads",
     demo: "",
-    status: "Completado",
+    status: "Finalizado",
     video: videoCombiCommander
   },
   {
-    title: "Portfolio Interactivo",
+    title: "Portfolio",
     description: "Mi sitio web personal con animaciones, efectos visuales y diseño responsivo.",
     longDescription: 
     `Portfolio personal creado para exhibir proyectos, habilidades y experiencia profesional a través de una interfaz moderna, accesible y totalmente responsive. 
@@ -211,7 +211,7 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('portfolio'),
     url: "https://github.com/PabloIgeiNakagawa/portfolio",
     demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
-    status: "Completado"
+    status: "Finalizado"
   },
   {
     title: "Información sobre Boca Juniors",
@@ -237,7 +237,7 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('boca_juniors'),
     url: "https://github.com/PabloIgeiNakagawa/boca-juniors",
     demo: "https://boca-juniors-pabloigeinakagawas-projects.vercel.app/",
-    status: "Completado"
+    status: "Finalizado"
   },
   {
     title: "Organización de Torneos de Fútbol",
