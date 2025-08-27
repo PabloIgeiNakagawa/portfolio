@@ -1,11 +1,10 @@
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import type { Proyecto } from '../home/components/projects/data/ProjectsData';
 import { ButtonCode, ButtonDemo } from '../../components/Buttons';
 import SectionTitle from '../../components/SectionTitle'; 
 
 const ProjectDetail = () => {
-  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
   const project = location.state?.project as Proyecto;
