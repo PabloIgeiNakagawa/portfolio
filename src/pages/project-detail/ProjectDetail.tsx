@@ -50,7 +50,7 @@ const ProjectDetail = () => {
 
   return (
     <section className="py-25 container mx-auto max-w-6xl px-4 sm:px-6 z-10">
-      <SectionTitle title={id ?? "Proyecto"} />
+      <SectionTitle title={project.title ?? "Proyecto"} />
       {/* Descripción */}
       <article className="p-6 rounded-xl dark:text-white text-black">
         <div className="mb-10">

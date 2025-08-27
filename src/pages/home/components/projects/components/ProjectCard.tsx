@@ -57,6 +57,15 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
     if (titleRef.current) gsap.to(titleRef.current, { y: 0, duration: 0.45, ease: 'power3.out' });
   }
 
+  function slugify(text: string) {
+    return text
+      .toLowerCase()
+      .normalize("NFD") // quita acentos
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "");
+  }
+
   return (
     <div
       ref={cardRef}
@@ -118,7 +127,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
           <div className="flex flex-wrap gap-3 pt-3 border-t border-gray-200 dark:border-neutral-700">
             {project.url && <ButtonCode href={project.url} />}
             {project.demo && <ButtonDemo href={project.demo} />}
-            <Link to={`/projects/${project.title}`} state={{ project }}>
+            <Link to={`/projects/${slugify(project.title)}`} state={{ project }}>
               <ButtonInfo />
             </Link>
           </div>
