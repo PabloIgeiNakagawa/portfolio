@@ -1,13 +1,15 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { proyectos } from '../home/components/projects/data/ProjectsData';
 import type { Proyecto } from '../home/components/projects/data/ProjectsData';
 import { ButtonCode, ButtonDemo } from '../../components/Buttons';
+import slugify from '../../utils/slugify';
 import SectionTitle from '../../components/SectionTitle'; 
 
 const ProjectDetail = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
-  const project = location.state?.project as Proyecto;
+  const project = proyectos.find(p => slugify(p.title) === id) as Proyecto;
 
   const [imagenIndex, setImagenIndex] = useState<number | null>(null);
 

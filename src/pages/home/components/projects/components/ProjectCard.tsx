@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ButtonCode, ButtonDemo, ButtonInfo } from '../../../../../components/Buttons';
 import type { Proyecto as Project } from '../data/ProjectsData';
 import { useRef, useEffect } from 'react';
+import slugify from '../../../../../utils/slugify';
 import gsap from 'gsap';
 
 // Mapeo de estados a clases Tailwind (colores)
@@ -55,15 +56,6 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
     if (imgInnerRef.current) gsap.to(imgInnerRef.current, { scale: 1, duration: 0.6, ease: 'power3.out' });
     if (overlayRef.current) gsap.to(overlayRef.current, { opacity: 1, duration: 0.5, ease: 'power3.out' });
     if (titleRef.current) gsap.to(titleRef.current, { y: 0, duration: 0.45, ease: 'power3.out' });
-  }
-
-  function slugify(text: string) {
-    return text
-      .toLowerCase()
-      .normalize("NFD") // quita acentos
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
   }
 
   return (
@@ -127,7 +119,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
           <div className="flex flex-wrap gap-3 pt-3 border-t border-gray-200 dark:border-neutral-700">
             {project.url && <ButtonCode href={project.url} />}
             {project.demo && <ButtonDemo href={project.demo} />}
-            <Link to={`/projects/${slugify(project.title)}`} state={{ project }}>
+            <Link to={`/projects/${slugify(project.title)}`}>
               <ButtonInfo />
             </Link>
           </div>
