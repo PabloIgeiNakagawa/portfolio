@@ -2,8 +2,8 @@ import type { Tecnologia } from "./TechnologiesData";
 
 interface TechnologyCardProps {
   tecnologia: Tecnologia;
-  onHover: (index: number | null) => void;
-  index: number;
+  onHover?: (index: number | null) => void;
+  index?: number;                           
 }
 
 export default function TechnologyCard({
@@ -14,8 +14,8 @@ export default function TechnologyCard({
   return (
     <div
       className="group relative bg-white dark:bg-neutral-900 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-50 dark:hover:bg-neutral-800 transition-all duration-300 border border-gray-200 dark:border-neutral-700 hover:border-gray-300 dark:hover:border-neutral-600 hover:scale-105 cursor-pointer shadow-lg"
-      onMouseEnter={() => onHover(index)}
-      onMouseLeave={() => onHover(null)}
+      onMouseEnter={() => onHover?.(index ?? null)}
+      onMouseLeave={() => onHover?.(null)}
     >
       <div className="absolute inset-0 bg-gray-100 dark:bg-neutral-700 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
       <div className="relative z-10 flex flex-col items-center text-center">

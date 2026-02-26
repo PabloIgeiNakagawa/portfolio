@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { backend, baseDeDatos, frontend, herramientasYEntornos } from './TechnologiesData';
 import TechnologyCard from './TechnologyCard';
 import gsap from 'gsap';
@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionTitle from '../../../../components/SectionTitle';
 
 export default function Technologies() {
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -50,7 +49,6 @@ export default function Technologies() {
             <div key={index} className="tech-card">
               <TechnologyCard
                 tecnologia={tecnologia}
-                onHover={setHoverIndex}
                 index={index}
               />
             </div>
@@ -64,7 +62,6 @@ export default function Technologies() {
             <div key={index} className="tech-card">
               <TechnologyCard
                 tecnologia={tecnologia}
-                onHover={setHoverIndex}
                 index={index}
               />
             </div>
@@ -78,7 +75,6 @@ export default function Technologies() {
             <div key={index} className="tech-card">
               <TechnologyCard
                 tecnologia={tecnologia}
-                onHover={setHoverIndex}
                 index={index}
               />
             </div>
@@ -92,7 +88,6 @@ export default function Technologies() {
             <div key={index} className="tech-card">
               <TechnologyCard
                 tecnologia={tecnologia}
-                onHover={setHoverIndex}
                 index={index}
               />
             </div>
