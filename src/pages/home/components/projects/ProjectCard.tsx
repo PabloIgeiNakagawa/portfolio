@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ButtonCode, ButtonDemo, ButtonInfo } from '../../../../../components/Buttons';
-import type { Proyecto as Project } from '../data/ProjectsData';
+import { ButtonCode, ButtonDemo, ButtonInfo } from '../../../../components/Buttons';
+import type { Proyecto as Project } from './ProjectsData';
 import { useRef, useEffect } from 'react';
-import slugify from '../../../../../utils/slugify';
+import slugify from '../../../../utils/slugify';
 import gsap from 'gsap';
 
 // Mapeo de estados a clases Tailwind (colores)
@@ -117,11 +117,11 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
 
           {/* Botones de acción */}
           <div className="flex flex-wrap gap-3 pt-3 border-t border-gray-200 dark:border-neutral-700">
-            {project.url && <ButtonCode href={project.url} />}
-            {project.demo && <ButtonDemo href={project.demo} />}
             <Link to={`/projects/${slugify(project.title)}`}>
               <ButtonInfo />
             </Link>
+            {project.url && <ButtonCode href={project.url} />}
+            {project.demo && <ButtonDemo href={project.demo} />}
           </div>
         </div>
       </div>

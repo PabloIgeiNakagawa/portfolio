@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { proyectos } from '../home/components/projects/data/ProjectsData';
-import type { Proyecto } from '../home/components/projects/data/ProjectsData';
+import { proyectos } from '../home/components/projects/ProjectsData';
+import type { Proyecto } from '../home/components/projects/ProjectsData';
 import { ButtonCode, ButtonDemo } from '../../components/Buttons';
 import slugify from '../../utils/slugify';
 import SectionTitle from '../../components/SectionTitle'; 

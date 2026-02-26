@@ -43,13 +43,15 @@ export default function About() {
           {/* Descripción ampliada */}
           <div className="space-y-6 prose prose-lg text-xl leading-relaxed font-texto">
             <p className="efecto-aparicion">
-              ¡Hola! Me llamo Pablo, soy una persona curiosa, honesta y empática. Me apasiona el fútbol, la música y los videojuegos, y disfruto aprender cosas nuevas, especialmente si me permiten mejorar o crear algo útil. Siempre trato de ir un poco más allá, de entender cómo funcionan las cosas y de buscarle la vuelta a los desafíos.
+              ¡Hola! Soy <strong>Pablo</strong>, Desarrollador .NET y estudiante avanzado de la Licenciatura en Sistemas en la UNGS. Me defino como una persona curiosa y analítica, con una fuerte motivación por entender cómo funcionan las cosas para transformarlas en soluciones útiles y eficientes.
             </p>
+            
             <p className="efecto-aparicion">
-              Actualmente estudio la Licenciatura en Sistemas en la Universidad Nacional de General Sarmiento (UNGS), y estoy próximo a finalizar la Tecnicatura Universitaria en Informática. En paralelo, desarrollo proyectos propios donde aplico lo que aprendo y experimento con nuevas tecnologías. Me estoy formando como Full Stack Developer, con un enfoque en React y .NET, y disfruto trabajar tanto en la lógica como en el diseño de las interfaces.
+              Mi enfoque técnico se centra en el ecosistema <strong>.NET (C#)</strong> y bases de datos <strong>SQL Server</strong>, complementado con el desarrollo de interfaces dinámicas y responsivas utilizando JavaScript, HTML/CSS y Bootstrap. He diseñado e implementado soluciones integrales que van desde la lógica de negocio con arquitectura en capas y principios SOLID, hasta la integración de APIs externas para servicios de tiempo real. Me apasiona escribir código limpio, escalable y orientado a resolver problemas reales.
             </p>
+            
             <p className="efecto-aparicion">
-              Estoy buscando mi primera experiencia profesional donde pueda seguir creciendo, aportar lo que sé y aprender de otros. Valoro los equipos que comparten conocimientos, tienen buena comunicación y disfrutan construir cosas juntos.
+              Actualmente, busco mi primera posición profesional como <strong>Trainee o Junior</strong> para aportar mi capacidad técnica y proactividad en un equipo colaborativo. Estoy entusiasmado por la oportunidad de crecer profesionalmente, aprender de expertos en el campo y contribuir al desarrollo de proyectos innovadores que tengan un impacto positivo.
             </p>
           </div>
         </div>

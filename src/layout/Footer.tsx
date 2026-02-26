@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <h3 className={h3ClassName}>Pablo Igei Nakagawa</h3>
             <p className={paClassName}>
-              Desarrollador Full Stack apasionado por crear soluciones innovadoras 
+              Desarrollador .NET apasionado por crear soluciones innovadoras 
               y experiencias digitales excepcionales.
             </p>
           </div>
@@ -72,10 +72,7 @@ const Footer = () => {
             {/* Información adicional */}
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm">
               <span>
-                Hecho con React y Tailwind CSS
-              </span>
-              <span>
-                Diseño responsivo
+                Hecho con TypeScript, React y Tailwind CSS
               </span>
             </div>
           </div>

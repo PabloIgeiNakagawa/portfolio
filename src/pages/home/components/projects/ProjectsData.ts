@@ -1,4 +1,4 @@
-import videoCombiCommander from '../../../../../assets/projects/combi_commander/demo.mp4'
+import videoCombiCommander from '../../../../assets/projects/combi_commander/demo.mp4'
 
 export type Feature = {
   titulo: string;
@@ -19,7 +19,7 @@ export interface Proyecto {
   video?: string;
 }
 
-const imageModules = import.meta.glob('../../../../../assets/projects/**/*.webp', { eager: true });
+const imageModules = import.meta.glob('../../../../assets/projects/**/*.webp', { eager: true });
 
 const getProjectImages = (projectFolder: string) => {
   const images = Object.entries(imageModules)
@@ -236,36 +236,7 @@ export const proyectos: Proyecto[] = [
     technologies: ["React", "Tailwind CSS", "TypeScript", "HTML", "CSS", "RapidAPI (Transfermarkt API)", "GitHub"],
     ...getProjectImages('boca_juniors'),
     url: "https://github.com/PabloIgeiNakagawa/boca-juniors",
-    demo: "https://boca-juniors-pabloigeinakagawas-projects.vercel.app/",
-    status: "Finalizado"
-  },
-  {
-    title: "Organización de Torneos de Fútbol",
-    description: "Aplicación web para la gestión de torneos de fútbol: permite registrar equipos, jugadores, partidos, árbitros, eventos en juego y estadísticas.",
-    longDescription: `Esta aplicación web permite organizar torneos de fútbol de forma integral. 
-    Los administradores pueden registrar equipos y jugadores, crear y gestionar partidos, asignar árbitros y registrar eventos como goles, tarjetas y sustituciones. 
-    Además, se generan estadísticas automáticas por jugador, equipo y torneo. Base de datos hosteada en Somee.com, .NET Web API hosteada en Render.com y frontend hosteado en Vercel.com`,
-    features: [
-      {
-        titulo: "Funcionalidades principales",
-        items: [
-          "Registro y edición de equipos con sus respectivos jugadores.",
-          "Creación y programación de partidos entre equipos.",
-          "Asignación de árbitros y registro de eventos dentro de cada partido (goles, tarjetas, cambios, etc.).",
-          "Visualización de estadísticas detalladas por jugador, equipo y torneo.",
-          "Diseño responsive adaptado a móviles, tablets y escritorio.",
-          "Navegación fluida y dinámica mediante React Router (SPA).",
-          "Componentes reutilizables con estilo consistente gracias a Tailwind CSS."
-        ]
-      }
-    ],
-    technologies: [
-      "React", "Tailwind CSS", "HTML", "CSS", "TypeScript", 
-      ".NET Web API", "Entity Framework Core", "SQL Server"
-    ],
-    ...getProjectImages('torneo_futbol'),
-    url: "",
     demo: "",
-    status: "En desarrollo"
+    status: "Finalizado"
   }
 ];

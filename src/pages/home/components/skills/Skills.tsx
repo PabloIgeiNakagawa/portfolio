@@ -9,19 +9,53 @@ export default function Skills() {
   const containerRef = useRef<HTMLElement | null>(null);
 
   const conceptos = [
-    { title: "POO", description: "Programación Orientada a Objetos" },
-    { title: "SOLID", description: "Principios de diseño de software" },
-    { title: "MVC", description: "Arquitectura Modelo-Vista-Controlador" },
-    { title: "UML", description: "Diagramas de clases, secuencia, actividad, estado, entidad-relacion y casos de uso" },
-    { title: "Metodologías ágiles", description: "Scrum" },
+    {
+      title: "Programación orientada a objetos",
+      description: "Aplicación de encapsulamiento, abstracción y separación de responsabilidades."
+    },
+    {
+      title: "Principios SOLID",
+      description: "Organización de lógica de negocio con bajo acoplamiento y alta cohesión."
+    },
+    {
+      title: "Arquitectura en capas",
+      description: "Separación entre presentación, aplicación, dominio e infraestructura."
+    },
+    {
+      title: "CQS",
+      description: "Separación entre operaciones de lectura y escritura para mayor claridad."
+    },
+    {
+      title: "Modelado relacional",
+      description: "Diseño de tablas, claves primarias/foráneas y normalización de datos."
+    },
+    {
+      title: "UML",
+      description: "Comprensión de diagramas de clases, secuencia, actividad y casos de uso."
+    },
+    {
+      title: "Metodologías de desarrollo",
+      description: "Conocimiento de enfoques ágiles (Scrum) y metodología tradicional."
+    }
   ];
 
   const habilidadesBlandas = [
-    { title: "Trabajo en equipo", description: "Colaboración y coordinación en proyectos" },
-    { title: "Comunicación", description: "Efectiva y clara, tanto oral como escrita" },
-    { title: "Resolución de problemas", description: "Analizar errores y proponer soluciones eficientes" },
-    { title: "Adaptabilidad", description: "Flexibilidad ante nuevos retos y tecnologías" },
-    { title: "Aprendizaje rápido", description: "Capacidad de incorporar nuevas herramientas y conocimientos" },
+    {
+      title: "Trabajo en equipo",
+      description: "Colaboración en proyectos grupales utilizando control de versiones y organización de tareas."
+    },
+    {
+      title: "Comunicación técnica",
+      description: "Capacidad de fundamentar decisiones de diseño y estructura del sistema."
+    },
+    {
+      title: "Autonomía en el aprendizaje",
+      description: "Búsqueda y aplicación de documentación oficial para resolver problemas técnicos."
+    },
+    {
+      title: "Pensamiento analítico",
+      description: "Análisis de problemas y evaluación de distintas alternativas de implementación."
+    }
   ];
 
   useEffect(() => {
@@ -82,7 +116,7 @@ export default function Skills() {
           {/* Habilidades blandas */}
           <div>
             <h3 className="text-xl font-semibold mb-6 font-titulo">Habilidades blandas</h3>
-            <ul className="grid gap-4 sm:grid-cols-2">
+            <ul className="grid gap-4">
               {habilidadesBlandas.map((h) => (
                 <li key={h.title} className="efecto-aparicion">
                   <div className="flex items-start gap-4 p-4 rounded-2xl border border-gray-100 dark:border-neutral-800 bg-white/0 dark:bg-transparent shadow-sm hover:shadow-md transition-all duration-200">

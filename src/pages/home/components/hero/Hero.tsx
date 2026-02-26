@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { socialLinks } from './components/HeroData'; 
-import type { SocialLink } from './components/HeroData';
-import ButtonSocial from './components/ButtonSocial';
-import HeroDescription from './components/HeroDescription';
+import { socialLinks } from './HeroData'; 
+import type { SocialLink } from './HeroData';
+import ButtonSocial from './ButtonSocial';
+import HeroDescription from './HeroDescription';
+import foto from '../../../../assets/hero/foto.png';
 
 function Hero() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -16,6 +17,7 @@ function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (!tituloRef.current || !subtituloRef.current) return;
+      if (!imageLoaded) return;
 
       const q = gsap.utils.selector(containerRef); 
       const r = gsap.utils.selector(rightColumnRef);
@@ -31,14 +33,17 @@ function Hero() {
       // Después de la columna izquierda, aparece la columna derecha
       tl.from(rightColumnRef.current, { x: 60, opacity: 0, duration: 0.8, ease: 'power3.out' });
 
-      // Micro-animaciones dentro de la columna derecha (imagen + texto)
-      // Ajustá los selectores si cambias la estructura interna
-      tl.from(r('img'), { scale: 0.96, opacity: 0, duration: 0.6 }, '-=0.45')
-        .from(r('h3, p'), { y: 10, opacity: 0, stagger: 0.12, duration: 0.45 }, '-=0.35');
+      // 3. LA FOTO: Animamos de 0 a 1 explícitamente para evitar el salto
+      tl.fromTo(r('img'), 
+        { opacity: 0, scale: 0.92 }, 
+        { opacity: 1, scale: 1, duration: 1.2, ease: "power2.inOut" }, 
+        "-=0.5"
+      )
+      .from(r('h3'), { y: 10, opacity: 0, duration: 0.5 }, "-=0.7");
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [imageLoaded]);
 
   return (
     <section id="hero"  className="min-h-screen flex items-center px-4 relative overflow-hidden">
@@ -52,7 +57,7 @@ function Hero() {
 
             <div className="mb-6 hola">
               <h2 ref={subtituloRef} className="text-xl sm:text-2xl lg:text-3xl font-titulo font-semibold">
-                Estudiante Licenciatura en Sistemas | React & .NET & SQL Server
+                Estudiante Licenciatura en Sistemas | .NET & SQL Server
               </h2>
             </div>
 
@@ -75,18 +80,15 @@ function Hero() {
               <div className="relative inline-block mb-6">
                 <div className="absolute inset-0 bg-gray-400 dark:bg-gray-900 rounded-full blur opacity-20"></div>
                 <img
-                  src="https://via.placeholder.com/350x350.png?text=Pablo+Nakagawa"
+                  src={foto}
                   alt="Pablo Igei Nakagawa"
-                  className={`relative rounded-full w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover shadow-2xl border-4 border-gray-200 dark:border-gray-700 transition-all duration-700 ${
-                    imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                  }`}
+                  className="relative rounded-full w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover shadow-2xl border-4 border-gray-200 dark:border-gray-700"
                   onLoad={() => setImageLoaded(true)}
                 />
               </div>
 
               <div className="space-y-2 text-center">
                 <h3 className="text-2xl font-bold font-titulo">Pablo Igei Nakagawa</h3>
-                <p className="text-lg font-texto">Full Stack Developer</p>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { tecnologias } from './data/TechnologiesData';
-import TechnologyCard from './components/TechnologyCard';
+import { backend, baseDeDatos, frontend, herramientasYEntornos } from './TechnologiesData';
+import TechnologyCard from './TechnologyCard';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionTitle from '../../../../components/SectionTitle';
@@ -43,14 +43,56 @@ export default function Technologies() {
           paragraph='A lo largo de mi formación y proyectos personales he trabajado con distintas tecnologías. Estas son las herramientas que conozco y con las que he resuelto desafíos prácticos, tanto en la universidad como por mi cuenta.'
         />
 
-        {/* Grid de tecnologías */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
-          {tecnologias.map((tecnologia, index) => (
+        {/* Backend */}
+        <h3 className="text-xl font-semibold mb-6 font-titulo border-l-4 border-gray-900 dark:border-white pl-3">Backend</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mb-5">
+          {backend.map((tecnologia, index) => (
             <div key={index} className="tech-card">
               <TechnologyCard
                 tecnologia={tecnologia}
                 onHover={setHoverIndex}
-                isHovered={hoverIndex === index}
+                index={index}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Base de Datos */}
+        <h3 className="text-xl font-semibold mb-6 font-titulo border-l-4 border-gray-900 dark:border-white pl-3">Base de Datos</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mb-5">
+          {baseDeDatos.map((tecnologia, index) => (
+            <div key={index} className="tech-card">
+              <TechnologyCard
+                tecnologia={tecnologia}
+                onHover={setHoverIndex}
+                index={index}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Frontend */}
+        <h3 className="text-xl font-semibold mb-6 font-titulo border-l-4 border-gray-900 dark:border-white pl-3">Frontend</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-5">
+          {frontend.map((tecnologia, index) => (
+            <div key={index} className="tech-card">
+              <TechnologyCard
+                tecnologia={tecnologia}
+                onHover={setHoverIndex}
+                index={index}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Herramientas y Entornos de Desarrollo */}
+        <h3 className="text-xl font-semibold mb-6 font-titulo border-l-4 border-gray-900 dark:border-white pl-3">Herramientas y Entornos de Desarrollo</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-5">
+          {herramientasYEntornos.map((tecnologia, index) => (
+            <div key={index} className="tech-card">
+              <TechnologyCard
+                tecnologia={tecnologia}
+                onHover={setHoverIndex}
                 index={index}
               />
             </div>

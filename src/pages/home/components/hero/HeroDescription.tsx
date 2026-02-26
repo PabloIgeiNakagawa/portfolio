@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function HeroDescription() {
-  const fullText: string = "Me gusta resolver, no sólo codificar.";
+  const fullText: string = "Me gusta resolver, no sólo programar.";
   const [typedText, setTypedText] = useState<string>('');
 
   useEffect(() => {

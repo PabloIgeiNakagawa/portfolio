@@ -1,16 +1,14 @@
-import type { Tecnologia } from "../data/TechnologiesData";
+import type { Tecnologia } from "./TechnologiesData";
 
 interface TechnologyCardProps {
   tecnologia: Tecnologia;
   onHover: (index: number | null) => void;
-  isHovered: boolean;
   index: number;
 }
 
 export default function TechnologyCard({
   tecnologia,
   onHover,
-  isHovered,
   index,
 }: TechnologyCardProps) {
   return (
@@ -40,20 +38,7 @@ export default function TechnologyCard({
         <h3 className="font-titulo font-semibold mb-2 group-hover:text-gray-700 dark:group-hover:text-neutral-300 transition-colors">
           {tecnologia.nombre}
         </h3>
-        <span className="font-subtitulo text-xs text-gray-500 dark:text-neutral-400">
-          {tecnologia.categoria}
-        </span>
       </div>
-
-      {isHovered && (
-        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-neutral-100 text-white dark:text-neutral-900 px-3 py-2 rounded-lg text-sm whitespace-nowrap z-20 border border-gray-700 dark:border-neutral-300 shadow-lg">
-          <div className="font-medium">{tecnologia.origen}</div>
-          {tecnologia.relacionadas && (
-            <div className="text-xs text-gray-300 dark:text-neutral-600">Tecnologias relacionadas: {tecnologia.relacionadas}</div>
-          )}
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-neutral-100"></div>
-        </div>
-      )}
     </div>
   );
 }
