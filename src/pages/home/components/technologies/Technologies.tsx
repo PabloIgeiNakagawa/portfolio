@@ -30,6 +30,22 @@ export default function Technologies() {
         once: true
       });
 
+      // Animación de los títulos (h3) para coordinar con las cards
+      gsap.set(q('h3'), { opacity: 0, y: 20 });
+      ScrollTrigger.batch(q('h3'), {
+        start: 'top 85%',
+        onEnter: batch => {
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power3.out',
+            stagger: 0.15
+          });
+        },
+        once: true
+      });
+
     }, containerRef);
 
     return () => ctx.revert();
