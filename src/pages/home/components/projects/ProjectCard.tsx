@@ -68,7 +68,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
     >
       <div className="flex flex-col lg:flex-row">
         {/* Imagen: inner wrapper para clip/scale y overlay para oscurecer */}
-        <div className="relative w-full lg:w-1/3 overflow-hidden">
+          <div className="relative w-full lg:w-1/3 overflow-hidden">
           <div ref={imgInnerRef} className="project-image-inner relative w-full h-48 sm:h-64 lg:h-full transform-gpu">
             <img
               ref={imgRef}
@@ -76,6 +76,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
               alt={project.title}
               className="w-full h-48 sm:h-64 lg:h-full object-cover"
               style={{ transformOrigin: 'center center' }}
+              loading="lazy"
             />
             {/* Overlay aplicado sobre la imagen para efecto de revelado */}
             <div

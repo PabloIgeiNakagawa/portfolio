@@ -24,6 +24,7 @@ export default function TechnologyCard({
             src={tecnologia.icono}
             alt={tecnologia.nombre}
             className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+            loading="lazy"
             onError={(e) => {
                 const target = e.target as HTMLImageElement; 
                 target.style.display = 'none'; 

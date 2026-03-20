@@ -4,7 +4,7 @@ import { socialLinks } from './HeroData';
 import type { SocialLink } from './HeroData';
 import ButtonSocial from './ButtonSocial';
 import HeroDescription from './HeroDescription';
-import foto from '../../../../assets/hero/foto.png';
+import foto from '../../../../assets/hero/foto.webp';
 
 function Hero() {
   const containerRef = useRef<HTMLDivElement | null>(null);

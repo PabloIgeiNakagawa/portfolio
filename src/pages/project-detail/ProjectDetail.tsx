@@ -129,6 +129,7 @@ const ProjectDetail = () => {
               src={imgUrl}
               alt={`${project.title} - Imagen ${index + 1}`}
               className="w-full h-60 sm:h-64 md:h-72 rounded-lg shadow-md object-cover cursor-pointer hover:scale-105 transition-transform"
+              loading="lazy"
               onClick={() => abrirVisor(index)}
             />
           ))}
