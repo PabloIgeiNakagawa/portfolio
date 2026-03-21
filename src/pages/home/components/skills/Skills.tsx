@@ -36,6 +36,10 @@ export default function Skills() {
     {
       title: "Metodologías de desarrollo",
       description: "Conocimiento de enfoques ágiles (Scrum) y metodología tradicional."
+    },
+    {
+      title: "Control de versiones",
+      description: "Gestión de cambios en el código con Git, ramas, merge y resolución de conflictos."
     }
   ];
 
@@ -55,6 +59,14 @@ export default function Skills() {
     {
       title: "Pensamiento analítico",
       description: "Análisis de problemas y evaluación de distintas alternativas de implementación."
+    },
+    {
+      title: "Resolución de problemas",
+      description: "Capacidad para identificar, diagnosticar y encontrar soluciones eficientes a desafíos técnicos."
+    },
+    {
+      title: "Proactividad",
+      description: "Iniciativa para anticipar necesidades y actuar sin esperar instrucciones."
     }
   ];
 
@@ -87,26 +99,31 @@ export default function Skills() {
 
   return (
     <section id="skills" ref={containerRef} className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
+      
       <div className="container mx-auto max-w-6xl px-6 relative z-10">
         <SectionTitle title="Habilidades y Conocimientos" />
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
           {/* Conceptos */}
           <div>
-            <h3 className="text-xl font-semibold mb-6 font-titulo">Conceptos de desarrollo</h3>
+            <h3 className="efecto-aparicion text-lg font-titulo font-semibold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+              <span className="w-1 h-5 bg-primary rounded-full"></span>
+              Conceptos de desarrollo
+            </h3>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2">
               {conceptos.map((c) => (
                 <article
                   key={c.title}
-                  className="efecto-aparicion p-4 rounded-2xl border border-gray-100 dark:border-neutral-800 bg-white/0 dark:bg-transparent shadow-sm hover:shadow-md transition-transform duration-200"
+                  className="efecto-aparicion p-4 rounded-xl border border-gray-200/50 dark:border-neutral-700/50 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-sm hover:bg-white dark:hover:bg-neutral-800 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5 transition-all duration-200 cursor-default"
                   aria-labelledby={`concept-${c.title}`}
                 >
-                  <div className="min-w-0 font-texto">
-                    <h4 id={`concept-${c.title}`} className="font-subtitulo font-semibold text-gray-900 dark:text-gray-100">
+                  <div className="min-w-0">
+                    <h4 id={`concept-${c.title}`} className="font-titulo font-medium text-sm text-gray-900 dark:text-white mb-1">
                       {c.title}
                     </h4>
-                    <p className="font-texto text-sm text-gray-600 dark:text-gray-300">{c.description}</p>
+                    <p className="font-texto text-xs text-gray-600 dark:text-neutral-400 leading-relaxed">{c.description}</p>
                   </div>
                 </article>
               ))}
@@ -115,14 +132,18 @@ export default function Skills() {
 
           {/* Habilidades blandas */}
           <div>
-            <h3 className="text-xl font-semibold mb-6 font-titulo">Habilidades blandas</h3>
-            <ul className="grid gap-4">
+            <h3 className="efecto-aparicion text-lg font-titulo font-semibold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+              <span className="w-1 h-5 bg-primary rounded-full"></span>
+              Habilidades blandas
+            </h3>
+            <ul className="grid gap-3">
               {habilidadesBlandas.map((h) => (
                 <li key={h.title} className="efecto-aparicion">
-                  <div className="flex items-start gap-4 p-4 rounded-2xl border border-gray-100 dark:border-neutral-800 bg-white/0 dark:bg-transparent shadow-sm hover:shadow-md transition-all duration-200">
-                    <div className="min-w-0 font-texto ">
-                      <p className="font-subtitulo font-semibold text-gray-900 dark:text-gray-100">{h.title}</p>
-                      <p className="font-texto text-sm text-gray-600 dark:text-gray-300">{h.description}</p>
+                  <div className="flex items-start gap-4 p-4 rounded-xl border border-gray-200/50 dark:border-neutral-700/50 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-sm hover:bg-white dark:hover:bg-neutral-800 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5 transition-all duration-200">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                    <div className="min-w-0">
+                      <p className="font-titulo font-medium text-sm text-gray-900 dark:text-white mb-1">{h.title}</p>
+                      <p className="font-texto text-xs text-gray-600 dark:text-neutral-400 leading-relaxed">{h.description}</p>
                     </div>
                   </div>
                 </li>
