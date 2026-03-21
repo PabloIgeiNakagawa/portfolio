@@ -11,7 +11,6 @@ export default function Header() {
   const location = useLocation();
   const estaEnDetalle = location.pathname.startsWith('/projects/');
   const navigate = useNavigate();
-  const buttonSpan = "block w-6 h-0.5 bg-gray-600 dark:bg-neutral-400 transition-all duration-300 origin-center"
 
   useEffect(() => {
     const manejarDesplazamiento = () => {
@@ -105,12 +104,14 @@ export default function Header() {
           
           <button
             onClick={toggleMenu}
-            className="flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors duration-200"
-            aria-label="Abrir menú"
+            className="flex justify-center items-center w-8 h-8 cursor-pointer"
+            aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
           >
-            <span className={`${buttonSpan} ${menuAbierto ? 'rotate-45 translate-y-[7px]' : ''}`}></span>
-            <span className={`${buttonSpan} my-1.5 ${menuAbierto ? 'opacity-0 scale-0' : ''}`}></span>
-            <span className={`${buttonSpan} ${menuAbierto ? '-rotate-45 -translate-y-[7px]' : ''}`}></span>
+            <div className="relative w-5 h-5">
+              <span className={`absolute top-1/2 left-0 w-full h-0.5 bg-gray-600 dark:bg-neutral-400 transition-all duration-300 ${menuAbierto ? 'rotate-45' : '-translate-y-1'}`}></span>
+              <span className={`absolute top-1/2 left-0 w-full h-0.5 bg-gray-600 dark:bg-neutral-400 transition-all duration-300 ${menuAbierto ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`}></span>
+              <span className={`absolute top-1/2 left-0 w-full h-0.5 bg-gray-600 dark:bg-neutral-400 transition-all duration-300 ${menuAbierto ? '-rotate-45' : 'translate-y-1'}`}></span>
+            </div>
           </button>
         </div>
       </div>
@@ -118,15 +119,15 @@ export default function Header() {
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${
         menuAbierto ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <nav className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-t border-gray-200 dark:border-neutral-800">
+        <nav className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-t border-gray-200/80 dark:border-neutral-800/80">
           <ul className="flex flex-col py-2">
             {['hero', 'about', 'skills','technologies', 'projects', 'contact'].map((seccion) => (
               <li key={seccion}>
                 <button
                   onClick={() => irASeccion(seccion as Seccion)}
-                  className={`w-full text-left px-6 py-3 transition-colors duration-200 ${
+                  className={`w-full text-left px-6 py-3 mx-2 my-0.5 rounded-lg transition-all duration-150 ${
                     seccionActiva === seccion 
-                      ? 'text-primary dark:text-primary bg-primary/5 font-medium' 
+                      ? 'text-primary dark:text-primary bg-primary/10 font-medium' 
                       : 'text-gray-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800'
                   }`}
                 >
