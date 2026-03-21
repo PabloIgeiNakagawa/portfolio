@@ -69,46 +69,53 @@ export default function DropdownTema() {
     );
   }
 
+  const iconoTema = () => {
+    if (temaActual === 'light') return <IconoSol />;
+    if (temaActual === 'dark') return <IconoLuna />;
+    return <IconoSistema />;
+  };
+
+  const nombreTema = (tema: Tema) => {
+    if (tema === 'light') return 'Claro';
+    if (tema === 'dark') return 'Oscuro';
+    return 'Sistema';
+  };
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative">
       <button
         onClick={() => setDesplegado(!desplegado)}
-        className="inline-flex items-center space-x-2 justify-center w-full cursor-pointer bg-white/60 dark:bg-neutral-950/50 backdrop-blur-xs font-medium text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors duration-200 p-2"
+        className="flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+        aria-label="Cambiar tema"
       >
-        {temaActual === 'light' && (
-          <IconoSol />
-        )}
-        {temaActual === 'dark' && (
-          <IconoLuna />
-        )}
-        {temaActual === 'system' && (
-          <IconoSistema />
-        )}
-        <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
+        {iconoTema()}
       </button>
 
       {desplegado && (
-        <div className="absolute right-0 mt-2 w-32 sm:w-40 rounded-md shadow-lg bg-white dark:bg-neutral-900 ring-1 ring-black ring-opacity-5 z-10">
-          <div className="py-1">
+        <>
+          <div 
+            className="fixed inset-0 z-40" 
+            onClick={() => setDesplegado(false)}
+          />
+          <div className="absolute right-0 mt-2 w-36 py-2 rounded-xl shadow-xl bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border border-gray-200/50 dark:border-neutral-700/50 z-50">
             {temasDisponibles.map((tema) => (
               <button
                 key={tema}
                 onClick={() => cambiarTema(tema)}
-                className={`block w-full text-left px-3 py-2 cursor-pointer font-texto text-sm text-black dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors duration-200 ${
-                  temaActual === tema ? 'font-bold bg-gray-100 dark:bg-neutral-700' : ''
+                className={`w-full flex items-center gap-3 px-4 py-2.5 cursor-pointer transition-all duration-150 ${
+                  temaActual === tema 
+                    ? 'text-primary dark:text-primary bg-primary/10 font-medium' 
+                    : 'text-gray-600 dark:text-neutral-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-neutral-800'
                 }`}
               >
-                <span className="flex items-center space-x-2">
-                  {tema === 'light' && <><IconoSol /><span>Claro</span></>}
-                  {tema === 'dark' && <><IconoLuna /><span>Oscuro</span></>}
-                  {tema === 'system' && <><IconoSistema /><span>Sistema</span></>}
-                </span>
+                {tema === 'light' && <IconoSol />}
+                {tema === 'dark' && <IconoLuna />}
+                {tema === 'system' && <IconoSistema />}
+                <span className="text-sm">{nombreTema(tema)}</span>
               </button>
             ))}
           </div>
-        </div>
+        </>
       )}
     </div>
   );
