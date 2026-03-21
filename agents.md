@@ -56,5 +56,6 @@
 - Formato: `Tipo: Descripción breve` (feat, fix, mejora, perf, docs, chore)
 - Commit body opcional: explicar qué, por qué y cómo probarlo
 - Pruebas: `npm run build` para verificar que compila
+- **Importante:** NO hacer push hasta que el usuario lo indique
 
 
