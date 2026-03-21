@@ -23,8 +23,8 @@ export default function Contact() {
   const [enviando, setEnviando] = useState<boolean>(false);
   const [enviado, setEnviado] = useState<boolean>(false);
 
-  const labelClass = "block font-subtitulo text-gray-900 dark:text-white font-semibold mb-2";
-  const inputTextAreaClass = "w-full bg-gray-100 dark:bg-neutral-800 rounded-lg px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent transition-all duration-300";
+  const labelClass = "block font-titulo text-gray-900 dark:text-white font-semibold mb-2";
+  const inputTextAreaClass = "w-full bg-gray-50 dark:bg-neutral-800/50 rounded-xl px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 border border-gray-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300";
 
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -139,29 +139,34 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden" ref={containerRef}>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
       <div className="container mx-auto max-w-2xl px-6 relative z-10">
         <SectionTitle title="Contáctame"
           paragraph="Estoy buscando trabajo y me encantaría formar parte de tu equipo"
         />
 
         {/* Formulario de contacto */}
-        <div className="bg-white dark:bg-neutral-900 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 dark:border-neutral-700">
-          <h3 className="text-2xl font-titulo font-bold mb-6 efecto-aparicion">
-            Envíame un mensaje
+        <div className="bg-white dark:bg-neutral-900/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-neutral-700/50 shadow-xl shadow-gray-900/5 dark:shadow-black/20">
+          <h3 className="text-2xl font-titulo font-bold mb-6 text-gray-900 dark:text-white efecto-aparicion">
+            Enviame un mensaje
           </h3>
 
           {enviado ? (
-            <div className="text-center py-8 efecto-aparicion">
-              <div className="text-6xl mb-4">✅</div>
-              <h4 className="text-xl font-semibold text-green-500 dark:text-green-400 mb-2">
-                ¡Mensaje enviado!
+            <div className="text-center py-12 efecto-aparicion">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+                <svg className="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h4 className="text-2xl font-titulo font-bold text-emerald-600 dark:text-emerald-400 mb-3">
+                Mensaje enviado
               </h4>
-              <p className="mb-6">
-                Gracias por contactarme. Te responderé lo antes posible.
+              <p className="font-texto text-gray-600 dark:text-neutral-400 mb-8">
+                Gracias por contactarme. Te respondere lo antes posible.
               </p>
               <button
                 onClick={() => setEnviado(false)}
-                className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 disabled:from-gray-600 cursor-pointer font-semibold py-2 px-6 rounded-lg transition-all duration-300"
+                className="bg-gray-100 dark:bg-neutral-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 cursor-pointer font-texto font-medium py-3 px-6 rounded-xl transition-all duration-300 border border-gray-200 dark:border-neutral-700"
               >
                 Enviar otro mensaje
               </button>
@@ -244,7 +249,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={enviando}
-                className="w-full bg-gradient-to-r bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 disabled:from-gray-600 disabled:to-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer efecto-aparicion"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer efecto-aparicion"
               >
                 {enviando ? (
                   <>
