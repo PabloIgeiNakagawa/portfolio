@@ -249,11 +249,11 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={enviando}
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/25 disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer efecto-aparicion"
+                className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer efecto-aparicion"
               >
                 {enviando ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-white/80 border-t-transparent rounded-full animate-spin"></div>
                     Enviando...
                   </>
                 ) : (
