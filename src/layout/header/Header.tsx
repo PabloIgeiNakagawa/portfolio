@@ -9,7 +9,6 @@ export default function Header() {
   const [seccionActiva, setSeccionActiva] = useState<Seccion>('hero');
   const [menuAbierto, setMenuAbierto] = useState<boolean>(false);
   const location = useLocation();
-  const estaEnDetalle = location.pathname.startsWith('/projects/');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,12 +32,10 @@ export default function Header() {
 
     window.addEventListener('scroll', manejarDesplazamiento);
     return () => window.removeEventListener('scroll', manejarDesplazamiento);
-  }, [estaEnDetalle]);
+  }, []);
 
   const irASeccion = (idSeccion: Seccion) => {
-    const estaEnDetalle = location.pathname.startsWith('/projects/');
-
-    if (estaEnDetalle || location.pathname !== '/') {
+    if (location.pathname !== '/') {
       navigate('/', { state: { seccionScroll: idSeccion } });
       } else {
         const elemento = document.getElementById(idSeccion);

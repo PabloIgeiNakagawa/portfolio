@@ -34,19 +34,4 @@ function ButtonDemo({ href }: ButtonProps) {
   );
 }
 
-const ButtonInfo = () => {
-  return (
-    <a
-      rel="noopener noreferrer"
-      className="group flex items-center gap-2 bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 font-texto"
-    >
-      <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      Ver detalles
-    </a>
-  );
-}
-
-
-export { ButtonCode, ButtonDemo, ButtonInfo };
+export { ButtonCode, ButtonDemo };

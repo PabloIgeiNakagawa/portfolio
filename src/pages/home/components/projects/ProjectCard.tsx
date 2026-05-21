@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
-import { ButtonCode, ButtonDemo, ButtonInfo } from '../../../../components/Buttons';
+import { ButtonCode, ButtonDemo } from '../../../../components/Buttons';
 import type { Proyecto as Project } from './ProjectsData';
 import { useRef, useEffect } from 'react';
-import slugify from '../../../../utils/slugify';
 import gsap from 'gsap';
 
 const statusColors: Record<string, string> = {
@@ -110,9 +108,6 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
           </div>
 
           <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-gray-100 dark:border-neutral-800">
-            <Link to={`/projects/${slugify(project.title)}`}>
-              <ButtonInfo />
-            </Link>
             {project.url && <ButtonCode href={project.url} />}
             {project.demo && <ButtonDemo href={project.demo} />}
           </div>
