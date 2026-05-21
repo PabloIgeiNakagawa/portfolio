@@ -24,7 +24,7 @@ export default function Contact() {
   const [enviado, setEnviado] = useState<boolean>(false);
 
   const labelClass = "block font-titulo text-gray-900 dark:text-white font-semibold mb-2";
-  const inputTextAreaClass = "w-full bg-gray-50 dark:bg-neutral-800/50 rounded-xl px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 border border-gray-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300";
+  const inputTextAreaClass = "w-full rounded-xl px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 border border-gray-300 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300";
 
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -146,7 +146,7 @@ export default function Contact() {
         />
 
         {/* Formulario de contacto */}
-        <div className="bg-white dark:bg-neutral-900/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-neutral-700/50 shadow-xl shadow-gray-900/5 dark:shadow-black/20">
+        <div className="rounded-2xl p-8 border border-gray-300 dark:border-neutral-700/50">
           <h3 className="text-2xl font-titulo font-bold mb-6 text-gray-900 dark:text-white efecto-aparicion">
             Enviame un mensaje
           </h3>

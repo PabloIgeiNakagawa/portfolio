@@ -24,7 +24,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
   function handleEnter() {
     gsap.killTweensOf([cardRef.current, imgRef.current, overlayRef.current, titleRef.current]);
 
-    gsap.to(cardRef.current, { y: -6, boxShadow: '0 20px 50px rgba(0,0,0,0.15)', duration: 0.5, ease: 'power3.out' });
+    gsap.to(cardRef.current, { y: -6, duration: 0.5, ease: 'power3.out' });
     gsap.to(imgRef.current, { scale: 1.05, duration: 0.6, ease: 'power3.out' });
 
     if (imgInnerRef.current) {
@@ -41,7 +41,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
   function handleLeave() {
     gsap.killTweensOf([cardRef.current, imgRef.current, imgInnerRef.current, overlayRef.current, titleRef.current]);
 
-    gsap.to(cardRef.current, { y: 0, boxShadow: '0 4px 20px rgba(0,0,0,0.08)', duration: 0.5, ease: 'power3.out' });
+    gsap.to(cardRef.current, { y: 0, duration: 0.5, ease: 'power3.out' });
     gsap.to(imgRef.current, { scale: 1, duration: 0.6, ease: 'power3.out' });
     if (imgInnerRef.current) gsap.to(imgInnerRef.current, { scale: 1, duration: 0.6, ease: 'power3.out' });
     if (overlayRef.current) gsap.to(overlayRef.current, { opacity: 1, duration: 0.5, ease: 'power3.out' });
@@ -53,8 +53,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
       ref={cardRef}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`group relative bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden border border-gray-200/80 dark:border-neutral-700/80 shadow-lg ${className}`}
-      style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
+      className={`group relative rounded-2xl overflow-hidden border border-gray-300 dark:border-neutral-700/80 ${className}`}
     >
       <div className="flex flex-col">
         <div className="relative w-full overflow-hidden">

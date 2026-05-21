@@ -22,8 +22,8 @@ export default function Skills() {
       description: "Separación entre presentación, aplicación, dominio e infraestructura."
     },
     {
-      title: "CQS",
-      description: "Separación entre operaciones de lectura y escritura para mayor claridad."
+      title: "APIs REST",
+      description: "Comprensión de endpoints HTTP, métodos estándar y formatos JSON."
     },
     {
       title: "Modelado relacional",
@@ -49,16 +49,12 @@ export default function Skills() {
       description: "Colaboración en proyectos grupales utilizando control de versiones y organización de tareas."
     },
     {
-      title: "Comunicación técnica",
-      description: "Capacidad de fundamentar decisiones de diseño y estructura del sistema."
-    },
-    {
       title: "Autonomía en el aprendizaje",
       description: "Búsqueda y aplicación de documentación oficial para resolver problemas técnicos."
     },
     {
-      title: "Pensamiento analítico",
-      description: "Análisis de problemas y evaluación de distintas alternativas de implementación."
+      title: "Adaptabilidad",
+      description: "Capacidad de ajustarme a nuevos entornos, herramientas y metodologías rápidamente."
     },
     {
       title: "Resolución de problemas",
@@ -112,11 +108,11 @@ export default function Skills() {
               Conceptos de desarrollo
             </h3>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               {conceptos.map((c) => (
                 <article
                   key={c.title}
-                  className="efecto-aparicion p-4 rounded-xl border border-gray-200/50 dark:border-neutral-700/50 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-sm hover:bg-white dark:hover:bg-neutral-800 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5 transition-all duration-200 cursor-default"
+                  className="efecto-aparicion p-4 rounded-xl border border-gray-300 dark:border-neutral-600/50 hover:border-primary dark:hover:border-primary transition-all duration-200 cursor-default"
                   aria-labelledby={`concept-${c.title}`}
                 >
                   <div className="min-w-0">
@@ -136,19 +132,19 @@ export default function Skills() {
               <span className="w-1 h-5 bg-primary rounded-full"></span>
               Habilidades blandas
             </h3>
-            <ul className="grid gap-3">
+            <div className="grid gap-5 sm:grid-cols-2">
               {habilidadesBlandas.map((h) => (
-                <li key={h.title} className="efecto-aparicion">
-                  <div className="flex items-start gap-4 p-4 rounded-xl border border-gray-200/50 dark:border-neutral-700/50 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-sm hover:bg-white dark:hover:bg-neutral-800 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5 transition-all duration-200">
-                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                    <div className="min-w-0">
-                      <p className="font-titulo font-medium text-sm text-gray-900 dark:text-white mb-1">{h.title}</p>
-                      <p className="font-texto text-xs text-gray-600 dark:text-neutral-400 leading-relaxed">{h.description}</p>
-                    </div>
+                <article
+                  key={h.title}
+                  className="efecto-aparicion p-4 rounded-xl border border-gray-300 dark:border-neutral-600/50 hover:border-primary dark:hover:border-primary transition-all duration-200 cursor-default"
+                >
+                  <div className="min-w-0">
+                    <h4 className="font-titulo font-medium text-sm text-gray-900 dark:text-white mb-1">{h.title}</h4>
+                    <p className="font-texto text-xs text-gray-600 dark:text-neutral-400 leading-relaxed">{h.description}</p>
                   </div>
-                </li>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

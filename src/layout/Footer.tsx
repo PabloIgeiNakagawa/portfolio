@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer className="bg-white dark:bg-neutral-950 text-gray-900 dark:text-white py-16 border-t border-gray-200/50 dark:border-neutral-800/50">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-2 gap-12 mb-12">
           <div>
             <h3 className="text-2xl font-bold mb-4 font-titulo text-gray-900 dark:text-white">
               Pablo Igei Nakagawa
@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="flex gap-3 mt-4">
               <a 
                 href="mailto:pabloigeinaka@gmail.com" 
-                className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center text-gray-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-all duration-200"
+                className="w-9 h-9 rounded-lg border border-gray-300 dark:border-neutral-700 flex items-center justify-center text-gray-600 dark:text-neutral-400 hover:border-primary hover:text-primary dark:hover:border-primary transition-all duration-200"
                 aria-label="Email"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -24,7 +24,7 @@ const Footer = () => {
                 href="https://github.com/PabloIgeiNakagawa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center text-gray-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-all duration-200"
+                className="w-9 h-9 rounded-lg border border-gray-300 dark:border-neutral-700 flex items-center justify-center text-gray-600 dark:text-neutral-400 hover:border-primary hover:text-primary dark:hover:border-primary transition-all duration-200"
                 aria-label="GitHub"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@ const Footer = () => {
                 href="https://linkedin.com/in/pabloigeinakagawa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-neutral-800 flex items-center justify-center text-gray-600 dark:text-neutral-400 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 transition-all duration-200"
+                className="w-9 h-9 rounded-lg border border-gray-300 dark:border-neutral-700 flex items-center justify-center text-gray-600 dark:text-neutral-400 hover:border-primary hover:text-primary dark:hover:border-primary transition-all duration-200"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -43,24 +43,6 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 dark:text-neutral-500 uppercase tracking-wider mb-4">
-              Navegación
-            </h3>
-            <ul className="space-y-2">
-              {['Inicio', 'Sobre Mí', 'Proyectos', 'Contacto'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase().replace(' ', '').replace('í', 'i')}`}
-                    className="text-sm text-gray-600 dark:text-neutral-400 hover:text-primary dark:hover:text-primary transition-colors duration-200"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div>
