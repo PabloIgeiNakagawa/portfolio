@@ -24,18 +24,18 @@ function Hero() {
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      tl.from(tituloRef.current, { y: -50, opacity: 0, duration: 0.8 })
-        .from(subtituloRef.current, { y: 30, opacity: 0, duration: 0.7 })
-        .from(descripcionRef.current, { y: 20, opacity: 0, duration: 0.6 })
-        .from(q('.social-btn'), { y: 8, opacity: 0, scale: 0.98, stagger: 0.1, duration: 0.8 });
+      tl.from(tituloRef.current, { y: -50, opacity: 0, duration: 0.5 })
+        .from(subtituloRef.current, { y: 30, opacity: 0, duration: 0.4 })
+        .from(descripcionRef.current, { y: 20, opacity: 0, duration: 0.4 })
+        .from(q('.social-btn'), { y: 8, opacity: 0, scale: 0.98, stagger: 0.1, duration: 0.5 });
 
-      tl.from(rightColumnRef.current, { x: 60, opacity: 0, duration: 0.8, ease: 'power3.out' })
+      tl.from(rightColumnRef.current, { x: 60, opacity: 0, duration: 0.5, ease: 'power3.out' })
         .fromTo(r('img'), 
           { opacity: 0, scale: 0.92 }, 
-          { opacity: 1, scale: 1, duration: 1.2, ease: "power2.inOut" }, 
+          { opacity: 1, scale: 1, duration: 0.7, ease: "power2.inOut" }, 
           "-=0.5"
         )
-        .from(r('.profile-name'), { y: 10, opacity: 0, duration: 0.5 }, "-=0.7");
+        .from(r('.profile-name'), { y: 10, opacity: 0, duration: 0.35 }, "-=0.7");
     }, containerRef);
 
     return () => ctx.revert();
@@ -57,7 +57,7 @@ function Hero() {
                 Estudiante de Licenciatura en Sistemas
               </h2>
               <p className="text-base sm:text-lg font-texto text-gray-600 dark:text-neutral-400 mt-1">
-                Desarrollador .NET & SQL Server
+                Desarrollador .NET
               </p>
             </div>
 

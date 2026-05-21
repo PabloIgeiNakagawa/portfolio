@@ -42,11 +42,10 @@ export const socialLinks: SocialLink[] = [
     icon: (
       <svg
         viewBox="0 0 24 24"
-        fill="currentColor"
         className="w-6 h-6"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M5 20h14v-2H5v2zm7-18a1 1 0 011 1v10.586l3.293-3.293a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L11 13.586V3a1 1 0 011-1z" />
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM16 22v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M9 10a3 3 0 106 0 3 3 0 00-6 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
       </svg>
     ),
     download: true
