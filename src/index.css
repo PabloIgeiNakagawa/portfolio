@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-@import "@fontsource/montserrat/700.css"; /* negrita */
-@import "@fontsource/roboto/400.css";     /* regular */
-@import "@fontsource/roboto/700.css";     /* negrita */
-@import "@fontsource/open-sans";          /* regular por defecto */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/900.css";
 
 :root {
   font-synthesis: none;
@@ -13,7 +12,41 @@
 }
 
 @theme {
-  --font-titulo: 'Montserrat', sans-serif;
-  --font-subtitulo: 'Roboto', sans-serif;
-  --font-texto: 'Open Sans', sans-serif;
+  --font-titulo: 'Inter', sans-serif;
+  --font-subtitulo: 'Inter', sans-serif;
+  --font-texto: 'Inter', sans-serif;
+  
+  --color-steam-bg: #171a21;
+  --color-steam-bg-light: #1b2838;
+  --color-steam-panel: rgba(0, 0, 0, 0.4);
+  --color-steam-panel-solid: rgba(23, 26, 33, 0.85);
+  --color-steam-panel-hover: rgba(40, 44, 52, 0.6);
+  --color-steam-text: #8f98a0;
+  --color-steam-text-light: #c7d5e0;
+  --color-steam-white: #ffffff;
+  --color-steam-blue: #1a9fff;
+  --color-steam-green: #90ba3c;
+  --color-steam-green-bright: #a4d83e;
+  --color-steam-border: rgba(255, 255, 255, 0.08);
+  --color-steam-border-light: rgba(255, 255, 255, 0.15);
+  --color-steam-orange-start: #ff7b00;
+  --color-steam-orange-end: #ff4500;
+  --color-steam-neon-blue: #00d4ff;
+  --color-steam-neon-purple: #b829dd;
+}
+
+@keyframes frameGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+body {
+  background-color: var(--color-steam-bg);
+  color: var(--color-steam-text);
+  background-image: linear-gradient(180deg, #171a21 0%, #1b2838 50%, #171a21 100%), url('/background.webp');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-blend-mode: overlay;
 }

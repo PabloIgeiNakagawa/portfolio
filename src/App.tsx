@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Layout from './layout/Layout';
 import Home from './pages/home/Home';
-import ProjectDetail from './pages/project-detail/ProjectDetail';
 import NotFound from './pages/not-found/NotFound'
 import './App.css';
 
@@ -21,11 +20,10 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="relative z-10 bg-white dark:bg-neutral-950 text-black dark:text-white">
+      <div className="relative z-10 w-full min-h-screen text-steam-text">
         <Routes>
            <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
-              <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="*" element={<NotFound />} />   
            </Route>
         </Routes>

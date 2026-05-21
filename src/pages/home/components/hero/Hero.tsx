@@ -1,103 +1,102 @@
-import { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { socialLinks } from './HeroData'; 
-import type { SocialLink } from './HeroData';
-import ButtonSocial from './ButtonSocial';
-import HeroDescription from './HeroDescription';
 import foto from '../../../../assets/hero/foto.webp';
+import arGif from '../../../../assets/hero/ar.gif';
+import cvPdf from '../../../../assets/CV_PabloIgeiNakagawa.pdf';
 
 function Hero() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const tituloRef = useRef<HTMLHeadingElement | null>(null);
-  const subtituloRef = useRef<HTMLDivElement | null>(null);
-  const descripcionRef = useRef<HTMLDivElement | null>(null);
-  const rightColumnRef = useRef<HTMLDivElement | null>(null);
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const getLevel = () => {
+    const birthDate = new Date('2003-04-21');
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (!tituloRef.current || !subtituloRef.current) return;
-      if (!imageLoaded) return;
-
-      const q = gsap.utils.selector(containerRef); 
-      const r = gsap.utils.selector(rightColumnRef);
-
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      tl.from(tituloRef.current, { y: -50, opacity: 0, duration: 0.8 })
-        .from(subtituloRef.current, { y: 30, opacity: 0, duration: 0.7 })
-        .from(descripcionRef.current, { y: 20, opacity: 0, duration: 0.6 })
-        .from(q('.social-btn'), { y: 8, opacity: 0, scale: 0.98, stagger: 0.1, duration: 0.8 });
-
-      tl.from(rightColumnRef.current, { x: 60, opacity: 0, duration: 0.8, ease: 'power3.out' })
-        .fromTo(r('img'), 
-          { opacity: 0, scale: 0.92 }, 
-          { opacity: 1, scale: 1, duration: 1.2, ease: "power2.inOut" }, 
-          "-=0.5"
-        )
-        .from(r('.profile-name'), { y: 10, opacity: 0, duration: 0.5 }, "-=0.7");
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [imageLoaded]);
+  const level = getLevel();
 
   return (
-    <section id="hero" className="min-h-screen flex items-center px-4 relative overflow-hidden">
-      <div className="container mx-auto max-w-6xl px-6">
-        <div className="grid gap-12 items-center lg:grid-cols-2">
-          <div ref={containerRef} className="order-1 text-center lg:text-left">
-            <h1 ref={tituloRef} className="text-6xl sm:text-7xl lg:text-8xl font-titulo font-black mb-6 tracking-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-neutral-200 dark:to-white">
-                {"{p}"}
-              </span>
-            </h1>
-
-            <div ref={subtituloRef}>
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-titulo font-medium text-gray-700 dark:text-neutral-300">
-                Estudiante de Licenciatura en Sistemas
-              </h2>
-              <p className="text-base sm:text-lg font-texto text-gray-600 dark:text-neutral-400 mt-1">
-                Desarrollador .NET & SQL Server
-              </p>
+    <section id="hero" className="relative scroll-mt-28">
+      <div className="p-6 md:p-8">
+        <div className="flex flex-col lg:flex-row gap-6">
+          <div className="flex-1 min-w-0 flex flex-row gap-4 items-start md:gap-6">
+            <div className="shrink-0">
+              <img 
+                src={foto} 
+                alt="Avatar" 
+                className="w-20 h-20 md:w-40 md:h-40 object-cover rounded-sm border-2 border-steam-green shadow-[0_0_15px_rgba(144,186,60,0.3)]"
+              />
             </div>
 
-            <div ref={descripcionRef} className="mt-6">
-              <HeroDescription />
-            </div>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl text-steam-white font-medium mb-2 tracking-tight">Pablo Igei Nakagawa</h1>
 
-            <div className="flex justify-center lg:justify-start gap-4 mt-8">
-              {socialLinks.map((link: SocialLink, index: number) => (
-                <div key={index} className="social-btn">
-                  <ButtonSocial link={link} />
-                </div>
-              ))}
+               <div className="flex flex-col gap-1.5 mb-3">
+                  <p className="text-steam-text text-xs flex items-center gap-2">
+                    <img src={arGif} alt="Argentina" className="w-5 h-auto inline-block" /> 
+                    Buenos Aires, Argentina
+                  </p>
+               </div>
+              
+               <p className="text-steam-text text-sm">
+                 Me gusta resolver, no solo programar.
+               </p>
             </div>
           </div>
 
-          <div ref={rightColumnRef} className="order-2 flex flex-col items-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl blur-3xl"></div>
-              <div className="relative">
-                <img
-                  src={foto}
-                  alt="Pablo Igei Nakagawa"
-                  className="rounded-3xl w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover shadow-2xl border-2 border-gray-100 dark:border-neutral-800"
-                  onLoad={() => setImageLoaded(true)}
-                />
+          <div className="lg:hidden flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <span className="text-steam-white text-xl font-medium">Nivel</span>
+              {level >= 50 ? (
+                <div className="w-8 h-8 bg-gradient-to-br from-steam-orange-start to-steam-orange-end flex items-center justify-center text-steam-white font-bold text-sm shadow-[0_0_12px_rgba(255,123,0,0.4)]" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
+                  {level}
+                </div>
+              ) : (
+                <div className="w-8 h-8 rounded-full border-2 border-yellow-400 bg-steam-bg-light/80 flex items-center justify-center text-steam-white font-bold text-sm shadow-[0_0_8px_rgba(255,255,0,0.3)]">
+                  {level}
+                </div>
+              )}
+            </div>
+            <div className="bg-black/30 backdrop-blur-sm px-3 py-2 flex items-center gap-2 rounded-sm flex-1">
+              <div className="w-8 h-8 rounded-full bg-steam-neon-purple flex items-center justify-center text-sm font-bold text-white shadow-[0_0_10px_rgba(184,41,221,0.6)]">D</div>
+              <div className="flex flex-col">
+                <span className="text-steam-white text-xs font-bold" style={{ fontWeight: 700 }}>Desarrollador</span>
+                <span className="text-steam-text text-[10px]">100 XP</span>
               </div>
             </div>
+            <a href={cvPdf} download="CV_PabloIgeiNakagawa.pdf" className="w-1/2 text-center bg-white/5 hover:bg-white/10 text-steam-white text-sm tracking-wide px-5 py-2.5 rounded-sm transition-colors duration-200">
+              Descargar CV
+            </a>
+          </div>
 
-            <div className="profile-name mt-6 text-center">
-              <h3 className="text-2xl font-bold font-titulo text-gray-900 dark:text-white">
-                Pablo Igei Nakagawa
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-neutral-500 mt-1">
-                Buenos Aires, Argentina
-              </p>
+          <div className="hidden lg:flex w-[300px] shrink-0 flex-col items-start gap-2">
+            <div className="flex items-center gap-2">
+                <span className="text-steam-white text-xl font-medium">Nivel</span>
+              {level >= 50 ? (
+                <div className="w-8 h-8 bg-gradient-to-br from-steam-orange-start to-steam-orange-end flex items-center justify-center text-steam-white font-bold text-sm shadow-[0_0_15px_rgba(255,123,0,0.4)]" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
+                  {level}
+                </div>
+              ) : (
+                <div className="w-8 h-8 rounded-full border-2 border-yellow-400 bg-steam-bg-light/80 flex items-center justify-center text-steam-white font-bold text-sm shadow-[0_0_10px_rgba(255,255,0,0.3)]">
+                  {level}
+                </div>
+              )}
             </div>
+            <div className="bg-black/30 backdrop-blur-sm px-4 py-3 flex w-full items-center gap-3 rounded-sm mt-2">
+              <div className="w-10 h-10 rounded-full bg-steam-neon-purple flex items-center justify-center text-lg font-bold text-white shadow-[0_0_12px_rgba(184,41,221,0.6)]">D</div>
+              <div className="flex flex-col">
+                <span className="text-steam-white text-sm font-bold" style={{ fontWeight: 700 }}>Desarrollador</span>
+                <span className="text-steam-text text-xs">100 XP</span>
+              </div>
+            </div>
+            <a href={cvPdf} download="CV_PabloIgeiNakagawa.pdf" className="w-1/2 text-center bg-white/5 hover:bg-white/10 text-steam-white text-sm tracking-wide px-5 py-2.5 rounded-sm transition-colors duration-200 mt-1">
+              Descargar CV
+            </a>
           </div>
         </div>
       </div>
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-steam-blue/30 to-transparent"></div>
     </section>
   );
 }

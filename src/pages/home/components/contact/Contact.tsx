@@ -1,10 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
-import SectionTitle from "../../../../components/SectionTitle";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface Formulario {
   name: string;
@@ -23,8 +20,8 @@ export default function Contact() {
   const [enviando, setEnviando] = useState<boolean>(false);
   const [enviado, setEnviado] = useState<boolean>(false);
 
-  const labelClass = "block font-titulo text-gray-900 dark:text-white font-semibold mb-2";
-  const inputTextAreaClass = "w-full bg-gray-50 dark:bg-neutral-800/50 rounded-xl px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 border border-gray-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300";
+  const labelClass = "block text-steam-text-light text-xs font-semibold mb-1 uppercase tracking-wide";
+  const inputClass = "w-full bg-black/30 backdrop-blur-sm border border-steam-border rounded-sm text-steam-white text-sm px-3 py-2 transition-all duration-200 focus:border-steam-blue focus:shadow-[0_0_0_2px_rgba(26,159,255,0.2)] focus:bg-black/40 placeholder-steam-text/50";
 
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -41,14 +38,13 @@ export default function Contact() {
 
     const captcha = recaptchaRef.current?.getValue();
     if (!captcha) {
-      alert("Por favor, verifica que no eres un robot.");
+      alert("Por favor, completa el captcha para enviar el mensaje.");
       return;
     }
 
     setEnviando(true);
 
     try {
-      // Captcha
       const verifyRes = await fetch("/api/verify-recaptcha", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,7 +61,6 @@ export default function Contact() {
         return;
       }
 
-      // EmailJS
       const datosEnviar = {
         ...formulario,
         "g-recaptcha-response": captcha
@@ -88,185 +83,106 @@ export default function Contact() {
       setEnviando(false);
     }
   };
-  
-  const containerRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    if (!containerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const q = gsap.utils.selector(containerRef);
-
-      // Inicial: escondemos campos, captcha y botones
-      gsap.set(q('.form-field'), { opacity: 0, y: 18, force3D: true });
-      gsap.set(q('.efecto-aparicion'), { opacity: 0, y: 18, force3D: true });
-
-      // Animación por lotes para los campos (más eficiente que uno por uno)
-      ScrollTrigger.batch(q('.form-field'), {
-        start: 'top 85%',
-        onEnter: (batch) => {
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.06
-          });
-        },
-        once: true
-      });
-
-      // Animación para elementos puntuales (título, captcha, botón)
-      ScrollTrigger.batch(q('.efecto-aparicion'), {
-        start: 'top 85%',
-        onEnter: (batch) => {
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.08
-          });
-        },
-        once: true
-      });
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden" ref={containerRef}>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
-      <div className="container mx-auto max-w-2xl px-6 relative z-10">
-        <SectionTitle title="Contáctame"
-          paragraph="Estoy buscando trabajo y me encantaría formar parte de tu equipo"
-        />
+    <section id="contact" className="w-full scroll-mt-28">
+      <div className="bg-steam-panel backdrop-blur-xl rounded-sm overflow-hidden">
+        <div className="bg-white/5 px-4 py-2.5">
+          <h2 className="text-steam-text-light text-lg font-semibold tracking-wide">Contacto</h2>
+        </div>
 
-        {/* Formulario de contacto */}
-        <div className="bg-white dark:bg-neutral-900/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 dark:border-neutral-700/50 shadow-xl shadow-gray-900/5 dark:shadow-black/20">
-          <h3 className="text-2xl font-titulo font-bold mb-6 text-gray-900 dark:text-white efecto-aparicion">
-            Enviame un mensaje
-          </h3>
-
-          {enviado ? (
-            <div className="text-center py-12 efecto-aparicion">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
-                <svg className="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h4 className="text-2xl font-titulo font-bold text-emerald-600 dark:text-emerald-400 mb-3">
-                Mensaje enviado
-              </h4>
-              <p className="font-texto text-gray-600 dark:text-neutral-400 mb-8">
-                Gracias por contactarme. Te respondere lo antes posible.
-              </p>
-              <button
-                onClick={() => setEnviado(false)}
-                className="bg-gray-100 dark:bg-neutral-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-neutral-700 cursor-pointer font-texto font-medium py-3 px-6 rounded-xl transition-all duration-300 border border-gray-200 dark:border-neutral-700"
-              >
-                Enviar otro mensaje
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={manejarEnvio} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="form-field">
-                  <label htmlFor="name" className={labelClass}>
-                    Nombre *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formulario.name}
-                    onChange={manejarCambio}
-                    className={inputTextAreaClass}
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="email" className={labelClass}>
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formulario.email}
-                    onChange={manejarCambio}
-                    className={inputTextAreaClass}
-                    placeholder="tu@email.com"
-                  />
-                </div>
-              </div>
-
-              <div className="form-field">
-                <label htmlFor="subject" className={labelClass}>
-                  Asunto *
-                </label>
+        <div className="p-4 md:p-6">
+        {enviado ? (
+          <div className="text-center py-8">
+            <h4 className="text-xl font-titulo font-bold text-steam-green mb-2">
+              Mensaje enviado
+            </h4>
+            <p className="font-texto text-steam-text mb-6 text-sm">
+              Gracias por tu mensaje. Te responderé lo antes posible.
+            </p>
+            <button
+              onClick={() => setEnviado(false)}
+              className="bg-steam-panel backdrop-blur-sm border border-steam-border rounded-sm text-steam-text-light px-4 py-2 text-sm transition-all duration-200 hover:border-steam-blue/40 hover:text-white"
+            >
+              Añadir un mensaje
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={manejarEnvio} className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className={labelClass}>Nombre</label>
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
+                  id="name"
+                  name="name"
                   required
-                  value={formulario.subject}
+                  value={formulario.name}
                   onChange={manejarCambio}
-                  className={inputTextAreaClass}
-                  placeholder="Oportunidad laboral"
+                  className={inputClass}
+                  placeholder="Tu nombre"
                 />
               </div>
-
-              <div className="form-field">
-                <label htmlFor="message" className={labelClass}>
-                  Mensaje *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
+              <div>
+                <label htmlFor="email" className={labelClass}>Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
                   required
-                  rows={6}
-                  value={formulario.message}
+                  value={formulario.email}
                   onChange={manejarCambio}
-                  className={`${inputTextAreaClass} resize-none`}
-                  placeholder="Cuéntame sobre la oportunidad laboral..."
+                  className={inputClass}
+                  placeholder="tu@email.com"
                 />
               </div>
+            </div>
 
-              <div className="flex justify-center efecto-aparicion">
-                <ReCAPTCHA
-                  sitekey={SITE_KEY}
-                  ref={recaptchaRef}
-                  theme="light"
-                />
-              </div>
+            <div>
+              <label htmlFor="subject" className={labelClass}>Asunto</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                value={formulario.subject}
+                onChange={manejarCambio}
+                className={inputClass}
+                placeholder="Oportunidad laboral"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className={labelClass}>Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={4}
+                value={formulario.message}
+                onChange={manejarCambio}
+                className={`${inputClass} resize-none`}
+                placeholder="Escribí tu mensaje..."
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2">
+              <ReCAPTCHA
+                sitekey={SITE_KEY}
+                ref={recaptchaRef}
+                theme="dark"
+              />
 
               <button
                 type="submit"
                 disabled={enviando}
-                className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/25 disabled:hover:scale-100 disabled:hover:shadow-none flex items-center justify-center gap-3 cursor-pointer efecto-aparicion"
+                className="bg-gradient-to-r from-steam-green-bright to-[#6b8a2b] text-white px-6 py-2 rounded-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
               >
-                {enviando ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/80 border-t-transparent rounded-full animate-spin"></div>
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <span>Enviar mensaje</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                  </>
-                )}
+                {enviando ? "Enviando..." : "Enviar Mensaje"}
               </button>
-            </form>
-          )}
+            </div>
+          </form>
+        )}
         </div>
       </div>
     </section>
