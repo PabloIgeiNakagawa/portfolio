@@ -39,25 +39,23 @@ export default function About() {
         <SectionTitle title="Sobre mí" />
 
         <div className="w-full">
-          <div className="relative bg-white dark:bg-neutral-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 lg:p-10 border border-gray-200/50 dark:border-neutral-700/50 shadow-lg">
-            <div className="absolute top-0 left-0 w-16 h-1 bg-gradient-to-r from-primary to-primary/50 rounded-br-full"></div>
-            
+          <div className="pl-6 md:pl-8 border-l-[1px] border-primary">
             <div className="space-y-5">
               <div className="about-content">
                 <p className="text-base md:text-lg text-gray-700 dark:text-neutral-300 leading-relaxed font-texto">
-                  ¡Hola! Soy <span className="font-titulo font-semibold text-primary">Pablo</span>, Desarrollador .NET y estudiante avanzado de la Licenciatura en Sistemas en la UNGS. Me considero una persona curiosa y analítica, apasionada por resolver problemas, con una fuerte motivación por entender cómo funcionan las cosas para transformarlas en soluciones útiles y eficientes.
+                  <span className="font-titulo font-semibold text-primary">¡Hola! Soy Pablo</span>, Desarrollador .NET y estudiante avanzado de la Licenciatura en Sistemas en la UNGS, donde ya completé el 70% de la carrera y me encuentro a un solo examen final de recibirme de Técnico Universitario en Informática. Me considero una persona curiosa y analítica, con una fuerte motivación por entender cómo funcionan las cosas para transformarlas en soluciones de software eficientes.
                 </p>
               </div>
               
               <div className="about-content">
                 <p className="text-base md:text-lg text-gray-700 dark:text-neutral-300 leading-relaxed font-texto">
-                  Mi enfoque técnico se centra en el ecosistema <span className="font-medium text-gray-900 dark:text-white">.NET (C#)</span> y bases de datos <span className="font-medium text-gray-900 dark:text-white">SQL Server</span>, complementado con el desarrollo de interfaces web modernas y responsivas utilizando JavaScript, HTML/CSS y Bootstrap. He diseñado e implementado desde cero soluciones integrales que van desde la lógica de negocio con arquitectura en capas y principios SOLID, hasta la integración de APIs externas para servicios de tiempo real.
+                  Mi enfoque técnico se centra en el ecosistema <span className="font-medium text-gray-900 dark:text-white">.NET (C#)</span> y <span className="font-medium text-gray-900 dark:text-white">SQL Server</span>, complementado con el desarrollo de interfaces web utilizando JavaScript y Bootstrap. En mis proyectos personales y académicos, he diseñado e implementado soluciones desde cero: desde la lógica de negocio aplicando Arquitectura Limpia/en Capas y principios SOLID, hasta la integración de APIs externas y servicios en tiempo real.
                 </p>
               </div>
               
               <div className="about-content">
                 <p className="text-base md:text-lg text-gray-700 dark:text-neutral-300 leading-relaxed font-texto">
-                  Actualmente, busco mi primera experiencia profesional como <span className="font-titulo font-medium text-primary">Trainee o Junior</span> para aportar mi capacidad técnica y proactividad en un equipo colaborativo. Estoy entusiasmado por la oportunidad de crecer profesionalmente, aprender de expertos en el campo y contribuir al desarrollo de proyectos innovadores que tengan un impacto positivo.
+                  Actualmente, busco mi primera experiencia profesional (<span className="font-titulo font-medium text-primary">Trainee / Junior / Pasantía</span>) en el sector IT. Estoy listo para aportar mi capacidad técnica, proactividad y mentalidad colaborativa en un equipo donde pueda seguir aprendiendo de expertos y contribuir al desarrollo de software con impacto real.
                 </p>
               </div>
             </div>
