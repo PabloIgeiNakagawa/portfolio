@@ -41,19 +41,19 @@ export default function SectionTitle({ title, paragraph, className = '' }: Secti
         y: 0,
         duration: 0.8,
         ease: 'power3.out',
-      })
+      }, 0)
       .to(lineRef.current, {
         scaleX: 1,
         opacity: 1,
         duration: 0.5,
         ease: 'power2.out',
-      }, '-=0.3')
+      }, 0)
       .to(decorLineRef.current, {
         scaleX: 1,
         opacity: 1,
         duration: 0.4,
         ease: 'power2.out',
-      }, '-=0.1');
+      }, 0);
 
       if (paragraphRef.current) {
         tl.to(paragraphRef.current, {
