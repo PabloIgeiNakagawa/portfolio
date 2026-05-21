@@ -5,7 +5,6 @@ export interface Proyecto {
   image: string;
   url: string;
   demo: string;
-  status: "Finalizado" | "En desarrollo" | "Planificado";
 }
 
 const imageModules = import.meta.glob('../../../../assets/projects/**/*.webp', { eager: true });
@@ -26,7 +25,6 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('tech_store'),
     url: "https://github.com/PabloIgeiNakagawa/TiendaOnline",
     demo: "http://techstore.somee.com/",
-    status: "Finalizado"
   },
   {
     title: "Sistema de gestión de flota de vehículos",
@@ -35,7 +33,6 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('combi_commander'),
     url: "https://gitlab.com/GastonSanchez/tp-principal-manejo-de-flotas/-/tree/Produccion?ref_type=heads",
     demo: "",
-    status: "Finalizado"
   },
   {
     title: "Portfolio",
@@ -44,7 +41,6 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('portfolio'),
     url: "https://github.com/PabloIgeiNakagawa/portfolio",
     demo: "https://portfolio-pabloigeinakagawas-projects.vercel.app/",
-    status: "Finalizado"
   },
   {
     title: "Información sobre Boca Juniors",
@@ -53,6 +49,5 @@ export const proyectos: Proyecto[] = [
     ...getProjectImages('boca_juniors'),
     url: "https://github.com/PabloIgeiNakagawa/boca-juniors",
     demo: "",
-    status: "Finalizado"
   }
 ];

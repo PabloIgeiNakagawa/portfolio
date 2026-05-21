@@ -17,48 +17,17 @@ export default function Projects() {
     const ctx = gsap.context(() => {
       const cards = containerRef.current!.querySelectorAll<HTMLElement>('.project-card');
 
-      gsap.set(cards, {
-        opacity: 0,
-        y: 50,
-        scale: 0.98,
-        transformOrigin: 'center center',
-        force3D: true,
-      });
-
-      cards.forEach(card => {
-        const inner = card.querySelector<HTMLElement>('.project-image-inner');
-        const overlay = card.querySelector<HTMLElement>('.project-image-overlay');
-        if (inner) gsap.set(inner, { clipPath: 'inset(100% 0 0 0)' }); // oculto desde abajo
-        if (overlay) gsap.set(overlay, { opacity: 1 }); // overlay visible inicialmente
-      });
+      gsap.set(cards, { opacity: 0, y: 30 });
 
       ScrollTrigger.batch(cards, {
         start: 'top 85%',
         onEnter: (batch) => {
-          batch.forEach((card, i) => {
-            const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-            tl.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.8,
-            }, 0);
-            const inner = card.querySelector<HTMLElement>('.project-image-inner');
-            if (inner) {
-              tl.to(inner, {
-                clipPath: 'inset(0% 0 0 0)',
-                duration: 0.9,
-              }, 0.05);
-            }
-            const overlay = card.querySelector<HTMLElement>('.project-image-overlay');
-            if (overlay) {
-              tl.to(overlay, { opacity: 0, duration: 0.6 }, 0.12);
-            }
-            const content = card.querySelector<HTMLElement>('.project-card-content');
-            if (content) {
-              tl.fromTo(content, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.35);
-            }
-            tl.delay(i * 0.12);
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power2.out',
           });
         },
         once: true
@@ -75,7 +44,7 @@ export default function Projects() {
     <section id="projects" className="py-20 relative overflow-hidden" ref={containerRef}>
       <div className="container mx-auto max-w-6xl px-6 relative z-10">
         <SectionTitle title="Mis Proyectos" paragraph="Explora algunos de mis proyectos más destacados."/>
-        <div className="mb-8 space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {proyectos.map((project: Project, index: number) => (
             <ProjectCard key={index} project={project} className="project-card" />
           ))}

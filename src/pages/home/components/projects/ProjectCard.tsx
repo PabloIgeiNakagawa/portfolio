@@ -3,12 +3,6 @@ import type { Proyecto as Project } from './ProjectsData';
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-const statusColors: Record<string, string> = {
-  "Finalizado": "bg-emerald-500 dark:bg-emerald-400 text-white",
-  "En desarrollo": "bg-amber-500 dark:bg-amber-400 text-white",
-  "Planificado": "bg-blue-500 dark:bg-blue-400 text-white"
-};
-
 interface ProjectCardProps {
   project: Project;
   className?: string;
@@ -62,9 +56,9 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
       className={`group relative bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden border border-gray-200/80 dark:border-neutral-700/80 shadow-lg ${className}`}
       style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
     >
-      <div className="flex flex-col lg:flex-row">
-        <div className="relative w-full lg:w-2/5 overflow-hidden">
-          <div ref={imgInnerRef} className="project-image-inner relative w-full h-48 sm:h-56 lg:h-full min-h-[200px] transform-gpu">
+      <div className="flex flex-col">
+        <div className="relative w-full overflow-hidden">
+          <div ref={imgInnerRef} className="project-image-inner relative w-full h-52 transform-gpu">
             <img
               ref={imgRef}
               src={project.image}
@@ -78,24 +72,18 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
               className="project-image-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"
             />
           </div>
-          
-          <span
-            className={`absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg backdrop-blur-sm ${statusColors[project.status]}`}
-          >
-            {project.status}
-          </span>
         </div>
 
-        <div className="p-6 lg:p-8 flex flex-col flex-1 project-card-content">
+        <div className="p-4 lg:p-5 flex flex-col flex-1 project-card-content">
           <div className="flex-1">
-            <h4 ref={titleRef} className="font-titulo text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300">
+            <h4 ref={titleRef} className="font-titulo text-base sm:text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors duration-300">
               {project.title}
             </h4>
-            <p className="font-texto text-gray-600 dark:text-neutral-400 text-sm sm:text-base mb-6 leading-relaxed line-clamp-3">
+            <p className="font-texto text-gray-600 dark:text-neutral-400 text-sm sm:text-base mb-3 leading-relaxed line-clamp-3">
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap gap-2 mb-3">
               {project.technologies.map((tech, i) => (
                 <span
                   key={i}
@@ -107,7 +95,7 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-gray-100 dark:border-neutral-800">
+          <div className="flex flex-wrap items-center justify-end gap-2 pt-3 border-t border-gray-100 dark:border-neutral-800">
             {project.url && <ButtonCode href={project.url} />}
             {project.demo && <ButtonDemo href={project.demo} />}
           </div>
