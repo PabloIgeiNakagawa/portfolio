@@ -18,8 +18,15 @@ export default function ProjectCard({ project, className = '' }: ProjectCardProp
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    const animatedElements = [
+      cardRef.current,
+      imgRef.current,
+      imgInnerRef.current,
+      overlayRef.current,
+    ];
+
     return () => {
-      gsap.killTweensOf([cardRef.current, imgRef.current, imgInnerRef.current, overlayRef.current]);
+      gsap.killTweensOf(animatedElements);
     };
   }, []);
 
