@@ -2,6 +2,7 @@ import CSharp from '../../../../assets/technologies/csharp.svg';
 import net from '../../../../assets/technologies/net.svg';
 
 import sqlServer from '../../../../assets/technologies/sqlserver.svg';
+import ssms from '../../../../assets/technologies/SSMS.webp';
 
 import html from '../../../../assets/technologies/html5.svg';
 import css from '../../../../assets/technologies/css.svg';
@@ -16,40 +17,44 @@ import visualStudio from '../../../../assets/technologies/visualstudio.svg';
 import VSCode from '../../../../assets/technologies/vscode.svg';
 import trello from '../../../../assets/technologies/trello.svg';
 import github from '../../../../assets/technologies/github.svg';
+import postman from '../../../../assets/technologies/postman.svg';
+import gitlab from '../../../../assets/technologies/gitlab.svg';
+import jira from '../../../../assets/technologies/Jira.svg';
 
 export interface Tecnologia {
   nombre: string;
   icono: string;
-  categoria: string;
 }
 
-export const backend: Tecnologia[] = [ 
-  { nombre: "C#", icono: CSharp, categoria: "backend"},
-  { nombre: ".NET", icono: net, categoria: "backend"},
-
-
+const backend: Tecnologia[] = [
+  { nombre: "C#", icono: CSharp },
+  { nombre: ".NET", icono: net },
 ];
 
-export const baseDeDatos: Tecnologia[] = [
-  { nombre: "SQL Server", icono: sqlServer, categoria: "database"},
+const baseDeDatos: Tecnologia[] = [
+  { nombre: "SQL Server", icono: sqlServer },
+  { nombre: "SSMS", icono: ssms },
 ];
 
-export const frontend: Tecnologia[] = [
-  { nombre: "HTML", icono: html, categoria: "frontend"},
-  { nombre: "CSS", icono: css, categoria: "frontend"},
-  { nombre: "JavaScript", icono: javascript, categoria: "frontend"},
-  { nombre: "TypeScript", icono: typescript, categoria: "frontend"},
-  { nombre: "React", icono: react, categoria: "frontend"},
-  { nombre: "Tailwind CSS", icono: tailwind, categoria: "frontend"},
-  { nombre: "Bootstrap", icono: bootstrap, categoria: "frontend"},
+const frontend: Tecnologia[] = [
+  { nombre: "HTML", icono: html },
+  { nombre: "CSS", icono: css },
+  { nombre: "JavaScript", icono: javascript },
+  { nombre: "TypeScript", icono: typescript },
+  { nombre: "React", icono: react },
+  { nombre: "Tailwind CSS", icono: tailwind },
+  { nombre: "Bootstrap", icono: bootstrap },
 ];
 
-export const herramientasYEntornos: Tecnologia[] = [
-  { nombre: "Visual Studio", icono: visualStudio, categoria: "tools"},
-  { nombre: "VS Code", icono: VSCode, categoria: "tools"},
-  { nombre: "Git", icono: git, categoria: "tools"},
-  { nombre: "GitHub", icono: github, categoria: "tools"},
-  { nombre: "Trello", icono: trello, categoria: "tools"}
+const herramientasYEntornos: Tecnologia[] = [
+  { nombre: "Visual Studio", icono: visualStudio },
+  { nombre: "VS Code", icono: VSCode },
+  { nombre: "Git", icono: git },
+  { nombre: "GitHub", icono: github },
+  { nombre: "GitLab", icono: gitlab },
+  { nombre: "Jira", icono: jira },
+  { nombre: "Trello", icono: trello },
+  { nombre: "Postman", icono: postman },
 ];
 
 export const allTechnologies: Tecnologia[] = [
@@ -58,10 +63,3 @@ export const allTechnologies: Tecnologia[] = [
   ...frontend,
   ...herramientasYEntornos,
 ];
-
-export const categoryMeta: Record<string, { label: string; color: string }> = {
-  backend: { label: 'Backend', color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' },
-  database: { label: 'Base de Datos', color: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300' },
-  frontend: { label: 'Frontend', color: 'bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300' },
-  tools: { label: 'Herramientas', color: 'bg-violet-100 text-violet-800 dark:bg-violet-900/50 dark:text-violet-300' },
-};

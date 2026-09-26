@@ -1,15 +1,18 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import { allTechnologies } from './TechnologiesData';
 import TechnologyCard from './TechnologyCard';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionTitle from '../../../../components/SectionTitle';
+import usePrefersReducedMotion from '../../../../hooks/usePrefersReducedMotion';
 
 export default function Technologies() {
   const containerRef = useRef<HTMLElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -17,7 +20,6 @@ export default function Technologies() {
 
       const cards = gridRef.current.querySelectorAll('.tech-card');
       gsap.set(cards, { opacity: 0, y: 30 });
-
       ScrollTrigger.batch(cards, {
         start: 'top 85%',
         onEnter: batch => {
@@ -34,7 +36,7 @@ export default function Technologies() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="technologies" ref={containerRef} className="py-12 relative overflow-hidden">
@@ -42,17 +44,14 @@ export default function Technologies() {
       
       <div className="container mx-auto max-w-6xl px-6 relative z-10">
         <SectionTitle 
-          title="Tecnologias que manejo"
-          paragraph='A lo largo de mi formación y proyectos personales he trabajado con distintas tecnologías. Estas son las herramientas que conozco y con las que he resuelto desafíos prácticos, tanto en la universidad como por mi cuenta.'
+          title="Tecnologías"
+          paragraph="Lenguajes, frameworks y herramientas"
         />
 
-        <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-          {allTechnologies.map((tecnologia, index) => (
-            <div key={index} className="tech-card">
-              <TechnologyCard
-                tecnologia={tecnologia}
-                index={index}
-              />
+        <div ref={gridRef} className="-m-1 flex flex-wrap justify-center">
+          {allTechnologies.map((tecnologia) => (
+            <div key={tecnologia.nombre} className="tech-card w-1/2 p-1 sm:w-1/3 lg:w-1/4">
+              <TechnologyCard tecnologia={tecnologia} />
             </div>
           ))}
         </div>

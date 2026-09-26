@@ -1,22 +1,13 @@
-import { categoryMeta } from "./TechnologiesData";
 import type { Tecnologia } from "./TechnologiesData";
 
 interface TechnologyCardProps {
   tecnologia: Tecnologia;
-  onHover?: (index: number | null) => void;
-  index?: number;                           
 }
 
-export default function TechnologyCard({
-  tecnologia,
-  onHover,
-  index,
-}: TechnologyCardProps) {
+export default function TechnologyCard({ tecnologia }: TechnologyCardProps) {
   return (
     <div
-      className="group relative p-4 rounded-xl border border-gray-300 dark:border-neutral-600/50 hover:border-primary dark:hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 cursor-pointer"
-      onMouseEnter={() => onHover?.(index ?? null)}
-      onMouseLeave={() => onHover?.(null)}
+      className="group relative p-4 rounded-xl border border-gray-300 dark:border-neutral-600/50 hover:border-primary dark:hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 cursor-default"
     >
       <div className="relative z-10 flex flex-col items-center text-center">
         <div className="w-12 h-12 mb-2 flex items-center justify-center relative">
@@ -40,9 +31,6 @@ export default function TechnologyCard({
         <h3 className="font-texto font-medium text-xs text-gray-700 dark:text-neutral-300 group-hover:text-primary transition-colors duration-300">
           {tecnologia.nombre}
         </h3>
-        <span className={`mt-1 px-2 py-0.5 rounded-full text-[10px] font-medium leading-tight ${categoryMeta[tecnologia.categoria].color}`}>
-          {categoryMeta[tecnologia.categoria].label}
-        </span>
       </div>
     </div>
   );
