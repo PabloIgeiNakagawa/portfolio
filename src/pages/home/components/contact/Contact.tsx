@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 import SectionTitle from "../../../../components/SectionTitle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import usePrefersReducedMotion from "../../../../hooks/usePrefersReducedMotion";
 
 interface Formulario {
   name: string;
@@ -22,12 +23,15 @@ export default function Contact() {
   });
   const [enviando, setEnviando] = useState<boolean>(false);
   const [enviado, setEnviado] = useState<boolean>(false);
+  const [mensajeEstado, setMensajeEstado] = useState('');
+  const [tipoMensaje, setTipoMensaje] = useState<'error' | 'success' | ''>('');
 
   const labelClass = "block font-titulo text-gray-900 dark:text-white font-semibold mb-2";
   const inputTextAreaClass = "w-full rounded-xl px-4 py-3 font-texto text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-400 border border-gray-300 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300";
 
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const manejarCambio = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormulario({
@@ -41,10 +45,13 @@ export default function Contact() {
 
     const captcha = recaptchaRef.current?.getValue();
     if (!captcha) {
-      alert("Por favor, verifica que no eres un robot.");
+      setTipoMensaje('error');
+      setMensajeEstado('Por favor, verifica que no eres un robot.');
       return;
     }
 
+    setMensajeEstado('');
+    setTipoMensaje('');
     setEnviando(true);
 
     try {
@@ -58,9 +65,8 @@ export default function Contact() {
       const verifyJson = await verifyRes.json();
 
       if (!verifyRes.ok || !verifyJson.success) {
-        console.error("Captcha verification failed:", verifyJson);
-        alert("No se pudo verificar el captcha. Intenta nuevamente.");
-        setEnviando(false);
+        setTipoMensaje('error');
+        setMensajeEstado('No se pudo verificar el captcha. Intenta nuevamente.');
         recaptchaRef.current?.reset();
         return;
       }
@@ -79,11 +85,14 @@ export default function Contact() {
       );
 
       setEnviado(true);
+      setTipoMensaje('success');
+      setMensajeEstado('Mensaje enviado. Gracias por contactarme.');
       setFormulario({ name: "", email: "", subject: "", message: "" });
       recaptchaRef.current?.reset();
     } catch (error) {
       console.error("Error al enviar:", error);
-      alert("Error al enviar el mensaje. Por favor intenta más tarde.");
+      setTipoMensaje('error');
+      setMensajeEstado('Error al enviar el mensaje. Por favor intenta más tarde.');
     } finally {
       setEnviando(false);
     }
@@ -91,7 +100,8 @@ export default function Contact() {
   
   const containerRef = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     gsap.registerPlugin(ScrollTrigger);
 
     if (!containerRef.current) return;
@@ -99,11 +109,24 @@ export default function Contact() {
     const ctx = gsap.context(() => {
       const q = gsap.utils.selector(containerRef);
 
-      // Inicial: escondemos campos, captcha y botones
+      gsap.set(q('.contact-panel'), { opacity: 0, y: 24 });
       gsap.set(q('.form-field'), { opacity: 0, y: 18, force3D: true });
       gsap.set(q('.efecto-aparicion'), { opacity: 0, y: 18, force3D: true });
 
-      // Animación por lotes para los campos (más eficiente que uno por uno)
+      ScrollTrigger.create({
+        trigger: q('.contact-panel'),
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          gsap.to(q('.contact-panel'), {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: 'power3.out',
+          });
+        },
+      });
+
       ScrollTrigger.batch(q('.form-field'), {
         start: 'top 85%',
         onEnter: (batch) => {
@@ -118,7 +141,6 @@ export default function Contact() {
         once: true
       });
 
-      // Animación para elementos puntuales (título, captcha, botón)
       ScrollTrigger.batch(q('.efecto-aparicion'), {
         start: 'top 85%',
         onEnter: (batch) => {
@@ -135,24 +157,24 @@ export default function Contact() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden" ref={containerRef}>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
       <div className="container mx-auto max-w-2xl px-6 relative z-10">
-        <SectionTitle title="Contáctame"
-          paragraph="Estoy buscando trabajo y me encantaría formar parte de tu equipo"
+        <SectionTitle title="Contacto"
+          paragraph="¿Tenés una propuesta o querés hablar sobre un proyecto? Escribime."
         />
 
         {/* Formulario de contacto */}
-        <div className="rounded-2xl p-8 border border-gray-300 dark:border-neutral-700/50">
+        <div className="contact-panel rounded-2xl p-8 border border-gray-300 dark:border-neutral-700/50">
           <h3 className="text-2xl font-titulo font-bold mb-6 text-gray-900 dark:text-white efecto-aparicion">
             Enviame un mensaje
           </h3>
 
           {enviado ? (
-            <div className="text-center py-12 efecto-aparicion">
+            <div className="text-center py-12 efecto-aparicion" role="status" aria-live="polite">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
                 <svg className="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -173,6 +195,14 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={manejarEnvio} className="space-y-6">
+              {mensajeEstado && (
+                <p
+                  role={tipoMensaje === 'error' ? 'alert' : 'status'}
+                  className={tipoMensaje === 'error' ? 'text-sm text-red-600 dark:text-red-400' : 'text-sm text-emerald-600 dark:text-emerald-400'}
+                >
+                  {mensajeEstado}
+                </p>
+              )}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="form-field">
                   <label htmlFor="name" className={labelClass}>

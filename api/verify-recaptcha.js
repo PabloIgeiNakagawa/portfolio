@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   }
 
   const { token } = req.body || {};
-  console.log("verify-recaptcha body:", req.body);
 
   if (!token) {
     return res.status(400).json({ success: false, message: "Missing token" });
@@ -26,13 +25,15 @@ export default async function handler(req, res) {
     });
 
     const data = await r.json();
-    console.log("google verify response:", data);
 
-    if (data.success) {
-      return res.status(200).json({ success: true, data });
-    } else {
-      return res.status(400).json({ success: false, data });
+    const requestHostname = req.headers.host?.split(':')[0].toLowerCase();
+    const captchaHostname = data.hostname?.toLowerCase();
+
+    if (data.success && requestHostname && captchaHostname === requestHostname) {
+      return res.status(200).json({ success: true });
     }
+
+    return res.status(400).json({ success: false, message: "Invalid captcha" });
   } catch (err) {
     console.error("verify-recaptcha error:", err);
     return res.status(500).json({ success: false, message: "Verification failed" });
