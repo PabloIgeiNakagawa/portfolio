@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { socialLinks } from './HeroData'; 
-import type { SocialLink } from './HeroData';
+import { socialLinks, type SocialLink } from '../../../../data/socialLinks';
 import ButtonSocial from './ButtonSocial';
 import HeroDescription from './HeroDescription';
 import foto from '../../../../assets/hero/foto.webp';
