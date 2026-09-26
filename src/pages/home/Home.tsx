@@ -16,7 +16,8 @@ function ScrollToSeccion() {
       const el = document.getElementById(scrollTarget);
       if (el) {
         setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
         }, 100);
       }
     }
@@ -28,17 +29,14 @@ function ScrollToSeccion() {
 const Home = () => {
   return (
     <>
-    <ScrollToSeccion/>
-    <main>
+      <ScrollToSeccion />
       <Hero />
       <About />
       <Skills />
       <Technologies />
       <Projects/>
       <Contact />
-    </main>
     </>
-    
   );
 };
 

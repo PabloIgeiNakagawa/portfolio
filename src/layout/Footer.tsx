@@ -86,7 +86,10 @@ const Footer = () => {
 
         <div className="flex justify-center mt-8">
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => window.scrollTo({
+              top: 0,
+              behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            })}
             className="w-12 h-12 rounded-xl bg-gray-900 dark:bg-neutral-800 text-white dark:text-white hover:bg-primary hover:dark:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 group cursor-pointer"
             aria-label="Volver arriba"
           >

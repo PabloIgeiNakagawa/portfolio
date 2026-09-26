@@ -1,6 +1,7 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 interface SectionTitleProps {
   title: string;
@@ -14,59 +15,38 @@ export default function SectionTitle({ title, paragraph, className = '' }: Secti
   const lineRef = useRef<HTMLDivElement | null>(null);
   const decorLineRef = useRef<HTMLDivElement | null>(null);
   const paragraphRef = useRef<HTMLParagraphElement | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     gsap.registerPlugin(ScrollTrigger);
 
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
       gsap.set(titleRef.current, { opacity: 0, y: 30 });
-      gsap.set(lineRef.current, { scaleX: 0, opacity: 0 });
-      gsap.set(decorLineRef.current, { scaleX: 0, opacity: 0 });
-      if (paragraphRef.current) {
-        gsap.set(paragraphRef.current, { opacity: 0, y: 20 });
-      }
+      gsap.set([lineRef.current, decorLineRef.current], { scaleX: 0, opacity: 0 });
+      if (paragraphRef.current) gsap.set(paragraphRef.current, { opacity: 0, y: 20 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 80%',
           once: true,
-        }
+        },
       });
 
-      tl.to(titleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      }, 0)
-      .to(lineRef.current, {
-        scaleX: 1,
-        opacity: 1,
-        duration: 0.5,
-        ease: 'power2.out',
-      }, 0)
-      .to(decorLineRef.current, {
-        scaleX: 1,
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power2.out',
-      }, 0);
+      tl.to(titleRef.current, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0)
+        .to(lineRef.current, { scaleX: 1, opacity: 1, duration: 0.5, ease: 'power2.out' }, 0)
+        .to(decorLineRef.current, { scaleX: 1, opacity: 1, duration: 0.4, ease: 'power2.out' }, 0);
 
       if (paragraphRef.current) {
-        tl.to(paragraphRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power2.out',
-        }, '-=0.2');
+        tl.to(paragraphRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.2');
       }
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <div ref={containerRef} className={`text-center mb-16 ${className}`}>

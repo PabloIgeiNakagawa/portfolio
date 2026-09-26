@@ -1,12 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionTitle from "../../../../components/SectionTitle";
+import usePrefersReducedMotion from "../../../../hooks/usePrefersReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Skills() {
   const containerRef = useRef<HTMLElement | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const conceptos = [
     {
@@ -66,10 +68,10 @@ export default function Skills() {
     }
   ];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     const ctx = gsap.context(() => {
       const q = gsap.utils.selector(containerRef);
-
       gsap.set(q(".efecto-aparicion"), { opacity: 0, y: 20 });
 
       ScrollTrigger.batch(q(".efecto-aparicion"), {
@@ -91,7 +93,7 @@ export default function Skills() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="skills" ref={containerRef} className="py-20 relative overflow-hidden">
