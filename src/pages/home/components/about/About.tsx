@@ -1,12 +1,15 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionTitle from '../../../../components/SectionTitle';
+import usePrefersReducedMotion from '../../../../hooks/usePrefersReducedMotion';
 
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -20,26 +23,16 @@ export default function About() {
           trigger: containerRef.current,
           start: 'top 75%',
           once: true,
-        }
+        },
       });
 
-      tl.to(q('.animated-border'), {
-        scaleY: 1,
-        duration: 5.0,
-        ease: 'power2.out'
-      }, 0)
-      .to(q('.about-content'), {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.2
-      }, 0);
+      tl.to(q('.animated-border'), { scaleY: 1, duration: 5, ease: 'power2.out' }, 0)
+        .to(q('.about-content'), { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.2 }, 0);
 
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="about" ref={containerRef} className="py-20 relative overflow-hidden">

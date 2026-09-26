@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
+import usePrefersReducedMotion from '../../../../hooks/usePrefersReducedMotion';
 
 export default function HeroDescription() {
   const fullText: string = "Me gusta resolver, no solo programar.";
   const [typedText, setTypedText] = useState<string>('');
   const [showCursor, setShowCursor] = useState<boolean>(true);
   const [isTyping, setIsTyping] = useState<boolean>(true);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setTypedText(fullText);
+      setIsTyping(false);
+      setShowCursor(false);
+      return;
+    }
+
     let index = 0;
     const interval = setInterval(() => {
       setTypedText(fullText.slice(0, index + 1));
@@ -18,17 +27,17 @@ export default function HeroDescription() {
     }, 80);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (isTyping) return;
+    if (isTyping || prefersReducedMotion) return;
     
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 530);
 
     return () => clearInterval(cursorInterval);
-  }, [isTyping]);
+  }, [isTyping, prefersReducedMotion]);
 
   return (
     <div className="relative">

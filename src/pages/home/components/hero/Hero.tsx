@@ -1,23 +1,24 @@
-import { useState, useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { socialLinks } from './HeroData'; 
 import type { SocialLink } from './HeroData';
 import ButtonSocial from './ButtonSocial';
 import HeroDescription from './HeroDescription';
 import foto from '../../../../assets/hero/foto.webp';
+import usePrefersReducedMotion from '../../../../hooks/usePrefersReducedMotion';
 
 function Hero() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const tituloRef = useRef<HTMLHeadingElement | null>(null);
+  const tituloRef = useRef<HTMLDivElement | null>(null);
   const subtituloRef = useRef<HTMLDivElement | null>(null);
   const descripcionRef = useRef<HTMLDivElement | null>(null);
   const rightColumnRef = useRef<HTMLDivElement | null>(null);
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     const ctx = gsap.context(() => {
       if (!tituloRef.current || !subtituloRef.current) return;
-      if (!imageLoaded) return;
 
       const q = gsap.utils.selector(containerRef); 
       const r = gsap.utils.selector(rightColumnRef);
@@ -39,25 +40,25 @@ function Hero() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [imageLoaded]);
+  }, [prefersReducedMotion]);
 
   return (
     <section id="hero" className="min-h-screen flex items-center px-4 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl px-6">
         <div className="grid gap-12 items-center lg:grid-cols-2">
           <div ref={containerRef} className="order-1 text-center lg:text-left">
-            <h1 ref={tituloRef} className="text-6xl sm:text-7xl lg:text-8xl font-titulo font-black mb-6 tracking-tight">
+            <div ref={tituloRef} aria-hidden="true" className="text-6xl sm:text-7xl lg:text-8xl font-titulo font-black mb-6 tracking-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-neutral-200 dark:to-white">
                 {"{p}"}
               </span>
-            </h1>
+            </div>
 
             <div ref={subtituloRef}>
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-titulo font-medium text-gray-700 dark:text-neutral-300">
-                Estudiante de Licenciatura en Sistemas
-              </h2>
-              <p className="text-base sm:text-lg font-texto text-gray-600 dark:text-neutral-400 mt-1">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-titulo font-semibold text-gray-700 dark:text-neutral-300">
                 Desarrollador .NET
+              </h1>
+              <p className="text-base sm:text-lg font-texto text-gray-600 dark:text-neutral-400 mt-1">
+                Estudiante avanzado de Licenciatura en Sistemas en la UNGS
               </p>
             </div>
 
@@ -82,7 +83,6 @@ function Hero() {
                   src={foto}
                   alt="Pablo Igei Nakagawa"
                   className="rounded-3xl w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 object-cover shadow-2xl border-2 border-gray-100 dark:border-neutral-800"
-                  onLoad={() => setImageLoaded(true)}
                 />
               </div>
             </div>
