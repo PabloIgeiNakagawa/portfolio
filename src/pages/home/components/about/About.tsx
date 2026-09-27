@@ -48,28 +48,20 @@ export default function About() {
           <div className="space-y-5">
             <div className="about-content">
               <p className="text-base md:text-lg text-gray-700 dark:text-neutral-300 leading-relaxed font-texto">
-                  <span className="font-titulo font-semibold text-primary">¡Hola! Soy Pablo</span>, Desarrollador .NET 
-                  y estudiante avanzado de la Licenciatura en Sistemas en la UNGS, donde ya completé el 70% de la carrera 
-                  y me encuentro a un solo examen final de recibirme de Técnico Universitario en Informática. 
-                  Me considero una persona curiosa y analítica, con una fuerte motivación por entender cómo funcionan las cosas para transformarlas en soluciones de software eficientes.
-                </p>
+                <span className="font-titulo font-semibold text-primary">¡Hola! Soy Pablo,</span> Desarrollador .NET y estudiante avanzado de la Licenciatura en Sistemas en la UNGS. Actualmente me desempeño como desarrollador backend, trabajando principalmente con C#, .NET y SQL Server en soluciones orientadas a servicios y APIs.
+              </p>
             </div>
             
             <div className="about-content">
               <p className="text-base md:text-lg text-gray-700 dark:text-neutral-300 leading-relaxed font-texto">
-                  Mi enfoque técnico se centra en el ecosistema <span className="font-medium text-gray-900 dark:text-white">.NET (C#)
-                  </span> y <span className="font-medium text-gray-900 dark:text-white">SQL Server</span>, complementado con el desarrollo de interfaces web utilizando JavaScript 
-                  y Bootstrap. En mis proyectos personales y académicos, he diseñado e implementado soluciones desde cero: desde la lógica de negocio aplicando 
-                  Arquitectura Limpia/en Capas y principios SOLID, hasta la integración de APIs externas y servicios en tiempo real.
-                </p>
+                Mi formación y experiencia se complementan con proyectos personales y académicos en los que he diseñado e implementado aplicaciones desde cero, aplicando Arquitectura Limpia, principios SOLID, Entity Framework Core, APIs REST y bases de datos relacionales. También cuento con experiencia en el desarrollo de interfaces web utilizando HTML, CSS, JavaScript y Bootstrap.
+              </p>
             </div>
             
             <div className="about-content">
               <p className="text-base md:text-lg text-gray-700 dark:text-neutral-300 leading-relaxed font-texto">
-                  Actualmente, busco mi primera experiencia profesional (<span className="font-titulo font-medium text-primary">Trainee / Junior / Pasantía</span>) en el sector IT. 
-                  Estoy listo para aportar mi capacidad técnica, proactividad y mentalidad colaborativa en un equipo donde pueda seguir aprendiendo de expertos 
-                  y contribuir al desarrollo de software con impacto real.
-                </p>
+                Me interesa especialmente el desarrollo backend y seguir profundizando en el ecosistema .NET, mejorando tanto mis conocimientos técnicos como mi capacidad para diseñar soluciones mantenibles y escalables. Disfruto entender cómo funcionan las cosas, resolver problemas y aprender nuevas tecnologías a través de proyectos y desafíos reales.
+              </p>
             </div>
           </div>
         </div>
